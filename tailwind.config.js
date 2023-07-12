@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       times: ["Times New Roman"],
       ver: ["Verdana"],
+      int: ["inter"],
     },
     screens: {
       sm: "480px",
@@ -14,13 +15,22 @@ module.exports = {
     },
 
     extend: {
+      // container: {
+      //   sm: "300px",
+      //   md: "500px",
+      //   lg: "600px",
+      // },
       colors: {
         logo: {
           left: "#0F172A",
           right: "#E76F51",
         },
         darkblue: "#0F172A",
+        "custom-color": "rgba(15, 23, 42, 0.7)",
+        "testimonial-color-bg-1": "rgba(231, 111, 81, 0.08)",
+        "testimonial-color-bg-2": "rgba(42, 157, 143, 0.08)",
       },
+
       // fontSize: {
       //   sm: "0.8rem",
       //   base: "1rem",
