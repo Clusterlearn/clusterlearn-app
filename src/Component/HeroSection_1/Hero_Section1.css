@@ -1,5 +1,20 @@
-/* .img {
-    width: 20px;
-    height: 20px;
 
-} */
+.womanImg {
+    object-fit: cover;
+    width: 541px;
+    height: 667px;
+    border-radius: 18rem 18rem 18rem 18rem;
+}
+
+.line {
+    height: 10px;
+    width: 234px;
+    background: var(--yellow, #E9C46A);
+    position: absolute;
+    top: 260px;
+    right: 490px;
+
+    /* margin: 70px 0 0 -150px; */
+    /* border: 1px solid red; */
+
+}

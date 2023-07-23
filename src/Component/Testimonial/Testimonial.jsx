@@ -5,19 +5,24 @@ import Button from "../Button/Button";
 
 function Testimonial() {
 
+
   return (
     <AppContainer1>
       <div>
-        <div className="flex flex-row gap-10 w-full mt-40">
+        <div id="testimonial" className="flex flex-row gap-10 w-full mt-40">
           <span className="max-w-1/2 bg-testimonial-color-bg-1 w-[660px] h-[512px] rounded-xl">
             <h1 className="font-ver font-normal leading-[45px] text-center py-20 w-[540px] h-[220px] text-darkblue text-[28px]">
               “I have connected with up to 10 groups through my development
               process. And my groups has been so helpful throughout”
             </h1>
             {/* image and text */}
-            <div className="flex mt-20">
-              <img src={GoodFace} alt="face" />
-              <span className="flex flex-col gap-5 mt-10 font-var">
+            <div className="flex px-3 mt-20">
+              <img
+                style={{ borderRadius: "3rem 3rem 3rem 3rem" }}
+                src={GoodFace}
+                alt="face"
+              />
+              <span className="flex flex-col gap-3 px-3 mt-10 font-var">
                 <h1 className=" text-darkblue font-normal text-[24px] leading-[30px]">
                   Ayomide Frezi
                 </h1>
@@ -34,9 +39,13 @@ function Testimonial() {
               process. And my groups has been so helpful throughout”
             </h1>
             {/* image and text */}
-            <div className="flex mt-20">
-              <img src={GoodFace} alt="face" />
-              <span className="flex flex-col gap-5 mt-10 font-var">
+            <div className="flex px-3 mt-20">
+              <img
+                style={{ borderRadius: "3rem 3rem 3rem 3rem" }}
+                src={GoodFace}
+                alt="face"
+              />
+              <span className="flex flex-col gap-3 px-3 mt-10 font-var">
                 <h1 className=" text-darkblue font-normal text-[24px] leading-[30px]">
                   Chioma Idris
                 </h1>

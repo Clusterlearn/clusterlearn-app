@@ -1,25 +1,39 @@
-// import react from "react-dom"
 import './App.css';
 import Header from './Component/Header/Header'
-import HeroSection1 from './Component/HeroSection_1/Hero_Section1';
-import Card from './Component/CardSection/Card';
-import Testimonial from './Component/Testimonial/Testimonial';
-import Mentor from './Component/MentorSection/Mentor';
-import GetInTouch from './Component/Get-In-Touch/GetInTouch';
 import Footer from './Component/Footer/Footer';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './Page/Home';
+import VerifyEmail from "./Page/EmailVerification/VerifyEmail";
+import ConfirmEmail from "./Page/EmailVerification/ConfirmEmail";
+
 
 
 function App() {
   return (
-    <div>
-      <Header />
-      <HeroSection1 />
-      <Card />
-      <Testimonial />
-      <Mentor />
-      <GetInTouch />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/verify-email">
+              <VerifyEmail />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/confirm-email">
+              <ConfirmEmail />
+            </Route>
+          </Switch>
+
+        </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

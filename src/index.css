@@ -9,3 +9,37 @@
         @apply font-normal
     };
 } */
+
+
+
+ :root {
+    --container-width-lg: 75%;
+    --container-width-md: 86%;
+    --container-width-sm: 90%;
+}
+
+
+
+/* .container {
+    width: var(--container-width-lg);
+    margin: 0 auto;
+} */
+
+/* img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+} */
+
+/*  */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: var(--container-width-md);
+    }
+}
+/*  */
+@media screen and (max-width: 600px) {
+    .container {
+        width: var(--container-width-sm);
+    }
+}

@@ -7,14 +7,15 @@ module.exports = {
       ver: ["Verdana"],
       int: ["inter"],
     },
-    screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
-    },
 
     extend: {
+      screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "976px",
+        xl: "1440px",
+      },
+
       // container: {
       //   sm: "300px",
       //   md: "500px",
@@ -29,6 +30,7 @@ module.exports = {
         "custom-color": "rgba(15, 23, 42, 0.7)",
         "testimonial-color-bg-1": "rgba(231, 111, 81, 0.08)",
         "testimonial-color-bg-2": "rgba(42, 157, 143, 0.08)",
+        borderEmail: "rgba(255, 255, 255, 0.70)",
       },
 
       // fontSize: {

@@ -12,7 +12,7 @@ function Card() {
     <div>
       <AppContainer1>
         <div>
-          <div className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  mt-40">
+          <div id="about" className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  mt-40">
             <div className="flex w-1/2 space-y-8">
               <Frame digit={"01"} color={"#E76F51"} />
               <div className="font-ver mt-5 ml-5">
