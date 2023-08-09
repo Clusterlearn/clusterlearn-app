@@ -1,9 +1,9 @@
 
 .womanImg {
-    object-fit: cover;
+    /* object-fit: cover;
     width: 541px;
-    height: 667px;
-    border-radius: 18rem 18rem 18rem 18rem;
+    height: 667px; */
+    border-radius: 19rem 19rem 19rem 19rem;
 }
 
 .line {

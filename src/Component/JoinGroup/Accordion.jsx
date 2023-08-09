@@ -7,7 +7,7 @@ function Accordion() {
       <div
         className=""
         style={{
-          width: "540px",
+          width: "490px",
           height: "66px",
           border: "1px solid #111",
           borderRadius: "30px",
@@ -16,21 +16,21 @@ function Accordion() {
       >
         <select
           style={{
-            width: "553px",
+            width: "490px",
             height: "66px",
             borderRadius: "30px",
             padding: "10px",
             cursor: "pointer",
           }}
         >
-            <option value="" disabled selected hidden>
-              Select your learning stage
-            </option>
-            <option value="">
-              <p>Beginner</p>
-            </option>
-            <option value="">Intermediate</option>
-            <option value="">Advanced</option>
+          <option value="" disabled selected hidden>
+            Select your learning stage
+          </option>
+          <option value="">
+            <p>Beginner</p>
+          </option>
+          <option value="">Intermediate</option>
+          <option value="">Advanced</option>
         </select>
       </div>
     </div>

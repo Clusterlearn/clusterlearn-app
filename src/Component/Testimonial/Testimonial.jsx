@@ -11,12 +11,12 @@ function Testimonial() {
       <div>
         <div id="testimonial" className="flex flex-row gap-10 w-full mt-40">
           <span className="max-w-1/2 bg-testimonial-color-bg-1 w-[660px] h-[512px] rounded-xl">
-            <h1 className="font-ver font-normal leading-[45px] text-center py-20 w-[540px] h-[220px] text-darkblue text-[28px]">
+            <h1 className="font-ver font-normal leading-[45px] text-center px-5 py-20 w-[540px] h-[220px] text-darkblue text-[28px]">
               “I have connected with up to 10 groups through my development
               process. And my groups has been so helpful throughout”
             </h1>
             {/* image and text */}
-            <div className="flex px-3 mt-20">
+            <div className="flex px-7 mt-20">
               <img
                 style={{ borderRadius: "3rem 3rem 3rem 3rem" }}
                 src={GoodFace}
@@ -34,12 +34,12 @@ function Testimonial() {
           </span>
 
           <span className="max-w-1/2 bg-testimonial-color-bg-2 w-[660px] h-[512px] rounded-xl">
-            <h1 className="font-ver font-normal leading-[45px] text-center py-20 w-[540px] h-[220px] text-darkblue text-[28px]">
+            <h1 className="font-ver font-normal leading-[45px] text-center px-5 py-20 w-[540px] h-[220px] text-darkblue text-[28px]">
               “I have connected with up to 10 groups through my development
               process. And my groups has been so helpful throughout”
             </h1>
             {/* image and text */}
-            <div className="flex px-3 mt-20">
+            <div className="flex px-7 mt-20">
               <img
                 style={{ borderRadius: "3rem 3rem 3rem 3rem" }}
                 src={GoodFace}
