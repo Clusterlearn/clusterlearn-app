@@ -6,6 +6,7 @@ import { CiTwitter } from "react-icons/ci";
 import { FiFacebook } from "react-icons/fi";
 import { ReactComponent as Green } from "../../../src/asset/green.svg";
 import { ReactComponent as Orange } from "../../../src/asset/orange.svg";
+// import { ReactComponent as Email } from "../../../src/asset/Email.svg";
 
 
 function Footer() {
@@ -27,10 +28,11 @@ function Footer() {
           {/* socials */}
           <span className="flex items-center justify-between gap-3">
             <a href="#">
+            {/* <Email /> */}
               <BiLogoGmail className="h-8 w-9 text-[#E76F51]" />
             </a>
             <a href="#">
-              {" "}
+
               <AiOutlineLinkedin className="h-8 w-9 text-[#E76F51]" />
             </a>
             <a href="#">
