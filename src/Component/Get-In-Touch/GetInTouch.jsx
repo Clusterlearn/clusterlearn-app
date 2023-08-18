@@ -11,7 +11,8 @@ function GetInTouch() {
         <h1 className=" text-white text-2xl text-center absolute">
           Get In touch
           <br /> with the <br />
-          latest <span className="text-logo-left text-[32px]">NEWS</span>
+          latest <span className="text-logo-left text-[32px]">
+          NEWS</span>
         </h1>
         <Link to="/Hello">
           <Button

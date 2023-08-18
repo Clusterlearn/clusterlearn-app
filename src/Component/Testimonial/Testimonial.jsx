@@ -9,7 +9,7 @@ function Testimonial() {
   return (
     <AppContainer1>
       <div>
-        <div id="testimonial" className="flex flex-row gap-10 w-full mt-40">
+        <div id="testimonial" className="md:flex md:flex-row gap-10 w-full mt-40">
           <span className="max-w-1/2 bg-testimonial-color-bg-1 w-[660px] h-[512px] rounded-xl">
             <h1 className="font-ver font-normal leading-[45px] text-center px-5 py-20 w-[540px] h-[220px] text-darkblue text-[28px]">
               “I have connected with up to 10 groups through my development

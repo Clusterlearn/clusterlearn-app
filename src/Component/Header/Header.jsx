@@ -16,13 +16,12 @@ const Header = () => {
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
-
   const formik = useFormik({
     initialValues: {
       email: "",
       number: "",
-    }
-  })
+    },
+  });
 
   const toggleModal = () => {
     setModal(!modal);
@@ -38,12 +37,12 @@ const Header = () => {
     <div>
       <AppContainer1>
         <div className="">
-          <nav className="md:flex  md:justify-between md:items-center my-5 text-sm md:text-lg">
+          <nav className="relative md:flex md:justify-between md:items-center my-5 text-sm md:text-lg">
             <div className="flex justify-between items-center">
               <Logo Text={"CLUSTER"} />
 
               {/* Hamburger Icon */}
-              <div className="md:hidden cursor-pointer block text-3xl">
+              <div className="md:hidden cursor-pointer block text-4xl">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
                   className="text- text-3xl hover:text-gray-200 duration-400 focus:outline-none"
@@ -53,7 +52,7 @@ const Header = () => {
               </div>
             </div>
             {/* Desktop Navigation */}
-            <ul className="hidden md:flex flex-wrap md:items-center z-[1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[400px] transition-all ease-in duration-500  font-ver text-base font-normal text-darkblue">
+            <ul className="hidden md:flex flex-wrap md:items-center font-ver text-base font-normal text-darkblue">
               <li className="px-5">
                 <a href="#about">About Us</a>
               </li>
@@ -110,6 +109,8 @@ const Header = () => {
           )}
         </div>
 
+        {/* JOIN GROUP SECTION */}
+        {/* JOIN GROUP SECTION */}
         {modal && (
           <div className="modal">
             <div className="overlay">
