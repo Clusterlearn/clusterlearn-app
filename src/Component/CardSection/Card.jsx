@@ -12,21 +12,25 @@ function Card() {
     <div>
       <AppContainer1>
         <div>
-          <div id="about" className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  mt-40">
-            <div className="flex w-1/2 space-y-8">
-              <Frame digit={"01"} color={"#E76F51"} />
-              <div className="font-ver mt-5 ml-5">
+          <div
+            id="about"
+            className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40
+            "
+          >
+            <div className="relative md:flex md:w-1/2 ">
+              <Frame className="" digit={"01"} color={"#E76F51"} />
+              <div className="sm:text-center md:text-start font-ver md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
                 <h1 className="text-4xl font-normal leading-9">
                   Connect with other learners
                 </h1>
-                <p className="mt-20 text-custom-color text-xl font-normal leading-[28px]">
+                <p className="md:mt-20 sm:mt-0 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px]">
                   Meet other learners who are taking the same course as you and
                   get help and support from each other.
                 </p>
               </div>
             </div>
             <div className=" max-h-full">
-              <img src={Card1} className="h-auto" alt="card one" />
+              <img src={Card1} className="h-auto object-cover" alt="card one" />
             </div>
           </div>
           {/* second card */}
