@@ -5,35 +5,37 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './Page/Home';
 import VerifyEmail from "./Page/EmailVerification/VerifyEmail";
 import ConfirmEmail from "./Page/EmailVerification/ConfirmEmail";
+import JoinLearnerCard from './Component/JoinLearner/JoinLearnerCard';
 
 
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/verify-email">
-              <VerifyEmail />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/confirm-email">
-              <ConfirmEmail />
-            </Route>
-          </Switch>
+    // <Router>
+    //   <div className="App">
+    //     <Header />
+    //     <div className="content">
+    //       <Switch>
+    //         <Route exact path="/">
+    //           <Home />
+    //         </Route>
+    //       </Switch>
+    //       <Switch>
+    //         <Route path="/verify-email">
+    //           <VerifyEmail />
+    //         </Route>
+    //       </Switch>
+    //       <Switch>
+    //         <Route path="/confirm-email">
+    //           <ConfirmEmail />
+    //         </Route>
+    //       </Switch>
 
-        </div>
-        <Footer />
-      </div>
-    </Router>
+    //     </div>
+    //     <Footer />
+    //   </div>
+    // </Router>
+    <JoinLearnerCard />
   );
 }
 
