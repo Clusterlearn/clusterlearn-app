@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './Page/Home';
 import VerifyEmail from "./Page/EmailVerification/VerifyEmail";
 import ConfirmEmail from "./Page/EmailVerification/ConfirmEmail";
+import JoinLearnerCard from './Component/JoinLearner/JoinLearnerCard';
 
 
 
