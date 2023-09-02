@@ -1,12 +1,12 @@
 import React from "react";
-import AppContainer1 from "../../Component/AppContainer1/AppContainer1";
+// import AppContainer1 from "../AppContainer1/AppContainer1";
 import CloseCopy from "../../../src/asset/close-copy.png";
 // import orange from "../../../src/asset/orange.svg";
 
 function VerifyEmail() {
   return (
-    <AppContainer1>
-      <div className="font-ver mx-auto w-[602px] h-[435px] rounded-2xl bg-gray-100">
+    <div className=" h-screen flex justify-center items-center">
+      <div className="font-ver w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%] rounded-2xl bg-gray-100">
         <div className="flex items-center justify-between px-8 py-8">
           <h1 className="text-darkblue text-2xl font-normal">Verify Email</h1>
           <img className="w-[22px] h-[20px]" src={CloseCopy} alt="cancel" />
@@ -40,7 +40,7 @@ function VerifyEmail() {
           </div>
         </div>
       </div>
-    </AppContainer1>
+    </div>
   );
 }
 
