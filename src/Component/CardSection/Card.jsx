@@ -10,84 +10,126 @@ import AppContainer1 from "../AppContainer1/AppContainer1";
 function Card() {
   return (
     <div>
-      <AppContainer1>
-        <div>
+      <div>
+        <div className="">
           <div
             id="about"
-            className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40
+            className=" px-10 flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40
             "
           >
-            <div className="relative md:flex md:w-1/2 ">
+            <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame className="" digit={"01"} color={"#E76F51"} />
-              <div className="sm:text-center md:text-start font-ver md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
-                <h1 className="text-4xl font-normal leading-9">
+              <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
+                <h1 className="sm:mt-10 lg:text-4xl md:text-3xl sm:text-[20px] font-ver font-normal leading-9">
                   Connect with other learners
                 </h1>
-                <p className="md:mt-20 sm:mt-0 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px]">
+                <p className="md:mt-20 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px] lg:text-[20px] sm:text-[16px] sm:leading-6 sm:mt-8">
                   Meet other learners who are taking the same course as you and
                   get help and support from each other.
                 </p>
+                <div className=" lg:mt-20 md:mt-0 ">
+                  <span className="text-[16px] font-normal text-[#E76F51] font-ver cursor-pointer border-b border-[#E76F51]">
+                    Join Learner &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <div className=" max-h-full">
               <img src={Card1} className="h-auto object-cover" alt="card one" />
             </div>
           </div>
+
+          {/* line */}
+          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+
           {/* second card */}
-          <div className="flex flex-col lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  mt-40">
-            <div className="flex w-1/2 space-y-8">
+          <div className=" px-10 flex lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+            <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame digit={"02"} color={"#2A9D8F"} />
-              <div className="font-ver mt-5 ml-5">
-                <h1 className="text-4xl font-normal leading-9">
+              <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
+                <h1 className="sm:mt-10 lg:text-4xl md:text-3xl sm:text-[20px] font-ver font-normal leading-9">
                   Ask questions
                 </h1>
-                <p className="mt-20 text-custom-color text-xl font-normal leading-[28px]">
+                <p className="md:mt-20 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px] lg:text-[20px] sm:text-[16px] sm:leading-6 sm:mt-8">
                   Ask questions about the course material and get answers from
                   other learners or mentors
                 </p>
+                <div className=" lg:mt-20 md:mt-0 ">
+                  <span className="text-[16px] font-normal text-[#2A9D8F] font-ver cursor-pointer border-b border-[#2A9D8F]">
+                    Join Learner &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <div className=" max-h-full order-first">
               <img src={Card2} alt="card two" />
             </div>
           </div>
+
+          {/* line */}
+          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+
           {/* Third card */}
-          <div className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  mt-40">
-            <div className="flex w-1/2 space-y-8">
+          <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+            <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame digit={"03"} color={"#E9C46A"} />
-              <div className="font-ver mt-5 ml-5">
-                <h1 className="text-4xl font-normal leading-9">Share tips</h1>
-                <p className="mt-20 text-custom-color text-xl font-normal leading-[28px]">
+              <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
+                <h1 className="sm:mt-10 lg:text-4xl md:text-3xl sm:text-[20px] font-ver font-normal leading-9">
+                  Share tips
+                </h1>
+                <p className="md:mt-20 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px] lg:text-[20px] sm:text-[16px] sm:leading-6 sm:mt-8">
                   Share tips and trick that you have learned with other learners
                 </p>
+                <div className=" lg:mt-20 md:mt-0 ">
+                  <span className="text-[16px] font-normal text-[#E9C46A] font-ver cursor-pointer border-b border-[#E9C46A]">
+                    Join Learner &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <div className=" max-h-full">
               <img src={Card3} alt="card 3" />
             </div>
           </div>
+
+          {/* line */}
+          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+
+
+
           {/* fourth card */}
-          <div className="flex flex-col lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  my-40">
-            <div className="flex w-1/2 space-y-8">
+          <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+            <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame digit={"04"} color={"#0F172A"} />
-              <div className="font-ver mt-5 ml-5">
-                <h1 className="text-4xl font-normal leading-9">
+              <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
+                <h1 className="sm:mt-10 lg:text-4xl md:text-3xl sm:text-[20px] font-ver font-normal leading-9">
                   Get motivated
                 </h1>
-                <p className="mt-20 text-custom-color text-xl font-normal leading-[28px]">
+                <p className="md:mt-20 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px] lg:text-[20px] sm:text-[16px] sm:leading-6 sm:mt-8">
                   Stay motivated and on track with your learning by connecting
                   with other learners who are currently working towards same
                   goals.
                 </p>
+                <div className=" lg:mt-20 md:mt-0 ">
+                  <span className="text-[16px] font-normal text-[#0F172A] font-ver cursor-pointer border-b border-[#0F172A]">
+                    Join Learner &gt;
+                  </span>
+                  </div>
               </div>
             </div>
             <div className=" max-h-full order-first">
               <img src={Card4} alt="card 4" />
             </div>
           </div>
+
+          {/* line */}
+          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+
+
+
           {/* fifth card */}
-          <div className="flex flex-col-reverse lg:flex-row md:flex-row sm:flex-col-reverse  flex-nowrap justify-between gap-10 w-full h-full  mt-40">
-            <div className="flex w-1/2 space-y-8">
+          <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+            <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame
                 digit={"05"}
                 color={"#fff"}
@@ -96,22 +138,29 @@ function Card() {
                 borderRadius={100}
                 borderColor={"#0f172a"}
               />
-              <div className="font-ver mt-5 ml-5">
-                <h1 className="text-4xl font-normal leading-9">
+              <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
+                <h1 className="sm:mt-10 lg:text-4xl md:text-3xl sm:text-[20px] font-ver font-normal leading-9">
                   Get matched with mentors
                 </h1>
-                <p className="mt-20 text-custom-color text-xl font-normal leading-[28px]">
+                <p className="md:mt-20 sm:my-6 md:my-0 text-custom-color text-xl font-normal leading-[28px] lg:text-[20px] sm:text-[16px] sm:leading-6 sm:mt-8">
                   Get matched with mentors who can help you with learning and
                   give you personalized advice.
                 </p>
+                <div className=" lg:mt-20 md:mt-0 ">
+                  <span className="text-[16px] font-normal text-[#0F172A] font-ver cursor-pointer border-b border-[#0F172A]">
+                    Join Learner &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <div className=" max-h-full">
               <img src={Card5} alt="card 5" />
             </div>
           </div>
+
+          
         </div>
-      </AppContainer1>
+      </div>
     </div>
   );
 }

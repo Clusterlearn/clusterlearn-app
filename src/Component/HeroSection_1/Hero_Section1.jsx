@@ -11,24 +11,24 @@ function Hero_Section1() {
       <AppContainer1>
         <div
           id="home"
-          className="relative md:flex justify-center items-center md:justify-between md:items-center md:gap-28 gap-0 overflow-hidden"
+          className="relative md:flex lg:justify-center md:justify-center lg:items-center md:items-center md:gap-28 gap-0 overflow-hidden"
         >
-          <div className="mt-6 text-center md:text-start ">
-            <p className="md:my-7 my-3 text-logo-left md:text-base text-sm font-ver font-normal">
+          <div className="mt-6 lg:text-start md:text-start ">
+            <p className="md:my-7 lg:my-7 my-3 text-logo-left lg:text-[16] md:text-base  font-ver font-normal sm:text-[12px] sm:text-[#0F172A]">
               FROM DIFFERENT PLATFORM WE
             </p>
-            <h1 className="md:space-y-8 space-y-2 text-logo-left md:text-5xl text-3xl font-ver font-normal">
+            <h1 className="lg:space-y-8 md:space-y-8 space-y-2 text-logo-left lg:text-[78px] md:text-3xl sm:text-[32px] font-ver font-normal">
               JOIN <span className="text-[#E76F51]">LEARNERS</span>
               <h1 className="">
                 WITH <span className="text-[#2A9D8F]">MENTORS</span>
               </h1>
             </h1>
-            <p className="md:my-7 my-3 text-logo-left py-4 md:py-0 md:text-start text-center md:text-base text-sm font-ver font-normal">
+            <p className="lg:my-7 md:my-7 my-3 text-logo-left py-4 lg:py-0 md:py-0 lg:text-[16px] md:text-base sm:text-[14px] sm:text-[#0F172A] sm:opacity-50 text-sm font-ver font-normal">
               Connect with other learners, ask questions, share tips, get
               motivated, and get matched with mentors.
             </p>
             {/* Input section */}
-            <div className="relative">
+            <div className="lg:relative md:relative">
               <input
                 type="text"
                 name=""
@@ -38,7 +38,7 @@ function Hero_Section1() {
               ></input>
               <button
                 type="submit"
-                className="bg-[#E76F51] text-white p-3 w-32 h-16 items-center rounded-full absolute right-1 top-2"
+                className="bg-[#E76F51] text-white p-3 w-32 h-16 items-center rounded-full lg:absolute md:absolute right-1 top-2 sm:w-full sm:mt-5"
               >
                 JOIN
               </button>
