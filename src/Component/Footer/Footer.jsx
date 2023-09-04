@@ -1,9 +1,7 @@
 import React from 'react'
 import AppContainer1 from '../AppContainer1/AppContainer1'
 import { BiLogoGmail } from "react-icons/bi"
-import { AiOutlineLinkedin } from "react-icons/ai";
-import { CiTwitter } from "react-icons/ci";
-import { FiFacebook } from "react-icons/fi";
+import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { ReactComponent as Green } from "../../../src/asset/green.svg";
 import { ReactComponent as Orange } from "../../../src/asset/orange.svg";
 // import { ReactComponent as Email } from "../../../src/asset/Email.svg";
@@ -12,54 +10,60 @@ import { ReactComponent as Orange } from "../../../src/asset/orange.svg";
 function Footer() {
   return (
     <div>
-      <AppContainer1>
-        <div className="flex flex-row items-center justify-between gap-5 font-ver text-black my-8">
-          <h1 className="text-center text-[40px] leading-[45px] font-normal">
+      <div className=''>
+        <div className=" sm:px-10 lg:flex md:flex flex-row items-center justify-between gap-5 font-ver text-black my-8">
+          <h1 className=" lg:text-center md:text-center lg:text-[40px] md:text-[40px] sm:text-[20px] lg:leading-[45px] md:leading-[45px] font-normal">
             Get better at learning.
           </h1>
           <nav className="">
-            <ul className="grid grid-cols-2 uppercase gap-10 text-xl font-ver font-normal text-darkblue cursor-pointer">
-              <li className="">About Us</li>
-              <li className="">Contact</li>
-              <li className="">Testimonial</li>
-              <li className="">Account</li>
+            <ul className="lg:grid md:grid lg:grid-cols-2 md:grid-cols-2 uppercase lg:gap-10 md:gap-10 lg:text-xl md:text-xl font-ver font-normal text-darkblue cursor-pointer">
+              <li className=" sm:mt-12">About Us</li>
+              <li className=" sm:mt-12">Contact</li>
+              <li className=" sm:mt-12">Testimonial</li>
+              <li className=" sm:mt-12">Account</li>
             </ul>
           </nav>
           {/* socials */}
-          <span className="flex items-center justify-between gap-3">
+          <span className=" sm:mt-28 flex items-center lg:justify-between md:justify-center sm:justify-around lg:gap-3 md:gap-3 ">
             <a href="#">
             {/* <Email /> */}
               <BiLogoGmail className="h-8 w-9 text-[#E76F51]" />
             </a>
             <a href="#">
 
-              <AiOutlineLinkedin className="h-8 w-9 text-[#E76F51]" />
+              <FaLinkedin className="h-8 w-9 text-[#E76F51]" />
             </a>
             <a href="#">
-              <CiTwitter className="h-8 w-9 text-[#E76F51]" />
+              <FaTwitter className="h-8 w-9 text-[#E76F51]" />
             </a>
             <a href="#">
-              <FiFacebook className="h-8 w-9 text-[#E76F51]" />
+              <FaFacebookF className="h-8 w-9 text-[#E76F51]" />
             </a>
           </span>
         </div>
 
-        <div className="mt-24 mb-5 flex flex-row items-center justify-between font-ver text-sm font-normal leading-normal">
-          <span>
-            <p className="text-logo-left">
+
+{/* line */}
+<div className=' bg-gray-200 h-1 w-full mt-40'></div>
+{/* end of line */}
+
+
+        <div className="mt-24 mb-5 lg:flex md:flex sm:flex-col lg:flex-row md:flex-row items-center justify-between font-ver text-sm font-normal leading-normal lg:px-10 md:px-10">
+          <div className=' sm:text-center sm:mt-10'>
+            <p className="text-logo-left lg:-mt-10 md:-mt-10">
               © Cluster learn limited. All rights reserved
             </p>
-          </span>
-          <span className='flex flex-row items-center justify-center gap-2'>
+          </div>
+          <div className=' sm:mt-10 flex lg:-mt-10 md:-mt-10 flex-row items-center justify-center gap-2'>
           <Green/>
             <p className="text-logo-left">Privacy Policy</p>
-          </span>
-          <span className='flex flex-row items-center justify-center gap-2'>
+          </div>
+          <div className=' sm:mt-10 flex lg:-mt-10 md:-mt-10 flex-row items-center justify-center gap-2'>
             <Orange />
             <p className="text-logo-left">Terms and Condition</p>
-          </span>
+          </div>
         </div>
-      </AppContainer1>
+      </div>
     </div>
   );
 }

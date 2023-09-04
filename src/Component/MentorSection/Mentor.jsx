@@ -8,7 +8,7 @@ function Mentor() {
       <AppContainer1>
         <div
           id="contact"
-          className="bg-darkblue rounded-2xl mt-40 h-[472px] pt-36 px-48 flex flex-col items-center justify-center text-center "
+          className="  bg-darkblue rounded-2xl mt-40 h-[472px] pt-36 px-48 flex flex-col items-center justify-center text-center "
         >
           <h1 className="font-ver font-normal text-white  text-center text-[48px] leading-[60px]">
             Unlock your potential to
