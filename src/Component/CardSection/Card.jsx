@@ -40,7 +40,7 @@ function Card() {
           </div>
 
           {/* line */}
-          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+          <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
           {/* second card */}
           <div className=" px-10 flex lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
@@ -67,7 +67,7 @@ function Card() {
           </div>
 
           {/* line */}
-          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+          <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
           {/* Third card */}
           <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
@@ -93,7 +93,7 @@ function Card() {
           </div>
 
           {/* line */}
-          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+          <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
 
 
@@ -123,7 +123,7 @@ function Card() {
           </div>
 
           {/* line */}
-          <div className=" w-full bg-gray-300 h-[2px] mt-32"></div>
+          <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
 
 

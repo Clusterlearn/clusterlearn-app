@@ -7,7 +7,7 @@ import {Link} from "react-router-dom"
 function GetInTouch() {
   return (
     <AppContainer1>
-      <div  className="flex items-center justify-center mt-40 relative cursor-pointer font-ver font-normal">
+      <div  className=" flex items-center justify-center mt-40 relative cursor-pointer font-ver font-normal">
         <h1 className=" text-white text-2xl text-center absolute">
           Get In touch
           <br /> with the <br />
