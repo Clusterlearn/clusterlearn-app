@@ -1,9 +1,8 @@
 import React from "react";
 import { ReactComponent as HeroWoman } from "../../../src/asset/hero1.svg";
-// import { ReactComponent as WomenImage } from "../../../src/asset/WomenImage.webp";
-// import WomenImage from "../../../src/asset/WomenImage.webp";
 import "./Hero_Section1.css"
 import AppContainer1 from "../AppContainer1/AppContainer1";
+
 
 function Hero_Section1() {
   return (
@@ -17,12 +16,18 @@ function Hero_Section1() {
             <p className="md:my-7 lg:my-7 my-3 text-logo-left lg:text-[16] md:text-base  font-ver font-normal sm:text-[12px] sm:text-[#0F172A]">
               FROM DIFFERENT PLATFORM WE
             </p>
-            <h1 className="lg:space-y-8 md:space-y-8 space-y-2 text-logo-left lg:text-[72px] md:text-3xl sm:text-[32px] font-ver font-normal">
-              JOIN <span className="text-[#E76F51]">LEARNERS</span>
-              <h1 className="">
-                WITH <span className="text-[#2A9D8F]">MENTORS</span>
+            {/* lg:space-y-12 md:space-y-12 space-y-2 text-logo-left lg:text-[72px] md:text-3xl sm:text-[32px] font-ver font-normal */}
+            <div className="flex justify-between text-logo-left font-ver font-normal">
+              <h1 className="lg:text-[75px] md:text-3xl sm:text-[32px] lg:mb-12 md:mb-10 sm:mb-0">
+                JOIN
+                <span className="text-[#E76F51] ml-5">LEARNERS</span>
               </h1>
-            </h1>
+            </div>
+            <div className="flex justify-between text-logo-left font-ver font-normal">
+              <h1 className="lg:text-[75px] md:text-3xl sm:text-[32px]">
+                WITH <span className="text-[#2A9D8F] ml-1">MENTORS</span>
+              </h1>
+            </div>
             <p className="lg:my-7 md:my-7 my-3 text-logo-left py-4 lg:py-0 md:py-0 lg:text-[16px] md:text-base sm:text-[14px] sm:text-[#0F172A] sm:opacity-50 text-sm font-ver font-normal">
               Connect with other learners, ask questions, share tips, get
               motivated, and get matched with mentors.
@@ -48,8 +53,8 @@ function Hero_Section1() {
           <div className="md:shrink-0">
             <div className="line sm:hidden"></div>
             <HeroWoman
-              style={{ borderRadius: "19rem 19rem 19rem 19rem" }}
-              className=" w-full object-cover lg:h-[676px] md:h-[676px] lg:w-[551px] md:w-[551px]  sm:mt-10"
+              // style={{ borderRadius: "19rem 19rem 19rem 19rem" }}
+              className=" w-full object-cover lg:h-[676px] md:h-[676px] lg:w-[451px] md:w-[451px] lg:rounded-[19rem] md:rounded-[19rem] rounded-[19rem]  sm:mt-10"
               // className="w-full sm:h-[316px] md:h-[408px] md:w-[452px] sm:w-[253px] lg:w-[558px] lg:h-[667px] object-cover sm:mt-10"
             />
           </div>
