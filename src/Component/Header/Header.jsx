@@ -7,14 +7,55 @@ import { ReactComponent as HamburgerNav } from "../../../src/asset/HamburgerNav.
 import JoinGroup from "../JoinGroup/JoinGroup";
 import ConfirmEmail from "../EmailVerification/ConfirmEmail";
 import JoinLearnerCard from "../JoinLearner/JoinLearnerCard";
+import Success from "../Success/Success";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setModal] = useState(false);
+  const [joinGroupBtn, setJoinGroupBtn] = useState(false);
+  const [joinLearnerBtn, setJoinLearnerBtn] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const toggleModal = () => {
     setModal(!showModal);
+    setJoinGroupBtn(false);
+    setJoinLearnerBtn(false);
+    setSuccess(false);
   };
+
+
+  // CONFIRM EMAIL MODAL
+  const toConfirmEmail = () => {
+    setJoinGroupBtn(!joinGroupBtn); //true
+    setModal(!showModal) //false
+  };
+  const closeToConfirmEmail = () => {
+    setJoinGroupBtn(false)
+  }
+
+  // JOIN LEARNER MODEL
+  const toJoinLearner = () => {
+      setJoinLearnerBtn(!joinLearnerBtn); //true
+      // setJoinLearnerBtn(!joinLearnerBtn);
+      setJoinGroupBtn(!joinGroupBtn);   //fase 
+    // setModal(!showModal)
+  }
+  const closeToJoinLearner = () => {
+    setJoinLearnerBtn(false)
+  }
+
+  // SUCCESS MODAL
+  const toSuccess = () => {
+    setJoinLearnerBtn(!joinLearnerBtn); // false
+    // setJoinGroupBtn(!joinGroupBtn)
+    setSuccess(!success)
+    // setModal(false)
+
+  }
+  const closeSuccess = () => {
+    setSuccess(false)
+  }
+
 
   // if (modal) {
   //   document.body.classList.add("active-modal");
@@ -112,21 +153,27 @@ const Header = () => {
           {/* TOGGLE OF ALL THE MODAL CARDS */}
           <div className="">
             {/* card 1 */}
-            <div className={`${showModal ? "block" : "hidden"}`}>
-              <div>
-                <JoinGroup />
+            <div className={` ${showModal ? "block" : "hidden"}`}>
+              <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+                <JoinGroup toConfirmEmail={toConfirmEmail} toggleModal={toggleModal} />
               </div>
             </div>
             {/* card 2 */}
-            <div className={`${showModal ? "block" : "hidden"}`}>
-              <div>
-                <ConfirmEmail />
+            <div className={`${joinGroupBtn ? "block" : "hidden"}`}>
+              <div className="  bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+                <ConfirmEmail toJoinLearner={toJoinLearner} toggleModal={closeToConfirmEmail} />
               </div>
             </div>
             {/* card 3 */}
-            <div className={`${showModal ? "block" : "hidden"}`}>
-              <div>
-                <JoinLearnerCard />
+            <div className={`${joinLearnerBtn ? "block" : "hidden"}`}>
+              <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+                <JoinLearnerCard toSuccess={toSuccess} toggleModal={closeToJoinLearner}/>
+              </div>
+            </div>
+            {/* card 4 */}
+            <div className={`${success ? "block" : "hidden"}`}>
+              <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+                <Success toggleModal={closeSuccess}/>
               </div>
             </div>
           </div>

@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-const ConfirmEmail = () => {
+const ConfirmEmail = ({toJoinLearner, toggleModal}) => {
 
 const [modal, setModal] = useState(false);
 
 
-const toggleModal = () => {
-  setModal(!modal);
-};
+// const toggleModal = () => {
+//   setModal(!modal);
+// };
 
 
 
@@ -46,6 +46,7 @@ const toggleModal = () => {
           </h1>
           <div className="flex flex-row justify-evenly items-center mt-40">
             <button
+            onClick={toJoinLearner}
               type="button"
               className="w-[175px] h-[60px] text-borderEmail text-xl font-normal bg-transparent border-2 rounded-[30px] border-borderEmail"
             >

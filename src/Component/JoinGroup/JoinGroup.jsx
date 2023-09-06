@@ -5,7 +5,7 @@ import { ReactComponent as CloseCircle } from "../../../src/asset/CloseCircle.sv
 import { ReactComponent as EmailIcon } from "../../../src/asset/EmailIcon.svg";
 
 
-const JoinGroup = () => {
+const JoinGroup = ({toConfirmEmail, toggleModal}) => {
  const [isChecked, setIsChecked] = useState(false);
  const [modal, setModal] = useState(false);
 
@@ -20,9 +20,9 @@ const JoinGroup = () => {
    email: "",
  };
 
- const toggleModal = () => {
-   setModal(modal);
- };
+//  const toggleModal = () => {
+//    setModal(modal);
+//  };
 
  const handleSubmit = (values) => {
    // Handle form submission here
@@ -77,7 +77,7 @@ const JoinGroup = () => {
                         <div className="flex flex-row gap-2 mr-8 mt-5 items-center">
                           <p>Remember me </p>
                           <label
-                            for="check"
+                            htmlFor="check"
                             className={`relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
                           >
                             <input
@@ -95,6 +95,7 @@ const JoinGroup = () => {
                       </div>
                       <div className="pt-20 mb-10">
                         <button
+                        onClick={toConfirmEmail}
                           type="submit"
                           className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px]"
                         >
