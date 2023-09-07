@@ -2,7 +2,7 @@ const Success = ({ toggleModal }) => {
     return (
         <div>
             <div className="h-screen flex justify-center items-center">
-                <div className="relative modal-content font-ver  w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  px-12 py-12">
+                <div className="relative modal-content font-ver sm:w-[342px] md:w-[602px] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  px-12 py-12">
                     <span
                         className="cursor-pointer absolute top-7 right-6"
                         onClick={toggleModal}
@@ -30,15 +30,15 @@ const Success = ({ toggleModal }) => {
                     </span>
 
                     <div className=" text-white">
-                        <div className=" justify-center flex mt-10">
-                            <h1 className=" w-[309px] leading-[44px] font-ver font-normal text-center text-[36px]">Successful</h1>
+                        <div className=" justify-center flex md:mt-10 sm:mt-5  ">
+                            <h1 className=" w-[309px] leading-[44px] font-ver font-normal text-center lg:text-[36px] sm:text-[25px]">Successful</h1>
                         </div>
                         <div className=" mt-5 flex text-center justify-center">
-                            <p className=" w-[457px] text-[20px] font-normal font-ver">You have been added to a group, check your email for the invite.</p>
+                            <p className=" md:w-[457px] sm:w-[243px] md:text-[20px] sm:text-[14px] font-normal font-ver">You have been added to a group, check your email for the invite.</p>
                         </div>
 
-                        <div className=" flex justify-center mt-10" >
-                            <button className=" bg-white w-[185px] h-[50px] p-[10px] rounded-[30px]"><span className="w-[117px] leading-[24px] font-ver font-normal text-[20px] text-[#E76F51]">Go to Email</span></button>
+                        <div className=" flex justify-center lg:mt-10 sm:mt-10" >
+                            <button className=" bg-white md:w-[185px] sm:w-[282px] md:h-[50px] sm:h-[40px] p-[10px] md:rounded-[30px] sm:rounded-[45px] "><span className="w-[117px] leading-[24px] font-ver font-normal text-[20px] text-[#E76F51]">Go to Email</span></button>
                         </div>
                     </div>
                 </div>
