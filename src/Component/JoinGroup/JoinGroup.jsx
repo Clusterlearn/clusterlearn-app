@@ -36,9 +36,9 @@ const JoinGroup = ({toConfirmEmail, toggleModal}) => {
         <div className="modal">
           <div className="">
             <div className="h-screen flex justify-center items-center">
-              <div className="relative modal-content font-ver  w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl bg-gray-100">
-                <div className="flex items-center justify-between px-8 py-8 ">
-                  <h1 className="text-darkblue text-2xl font-normal">
+              <div className="relative modal-content font-ver sm:w-[342px]   w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl bg-gray-100">
+                <div className="flex items-center justify-between px-8 lg:py-8 sm:mt-4 ">
+                  <h1 className="text-darkblue md:text-2xl lg:text-2xl sm:text-[16px] font-normal">
                     Verify Email
                   </h1>
                   <span className="cursor-pointer" onClick={toggleModal}>
@@ -55,7 +55,7 @@ const JoinGroup = ({toConfirmEmail, toggleModal}) => {
                 >
                   <Form>
                     <div className="flex flex-col px-8">
-                      <label className="text-xl text-darkblue font-normal leading-6 mt-16">
+                      <label className="lg:text-xl md:text-xl sm:[16px] text-darkblue font-normal leading-6 md:mt-16 lg:mt-16 sm:mt-8">
                         Email
                       </label>
                       <div className="relative flex items-center text-darkblue focus-within:text-darkblue ">
@@ -74,7 +74,7 @@ const JoinGroup = ({toConfirmEmail, toggleModal}) => {
                       </div>
 
                       <div className="flex flex-row-reverse">
-                        <div className="flex flex-row gap-2 mr-8 mt-5 items-center">
+                        <div className="flex flex-row gap-2 lg:mr-8 mt-5 items-center">
                           <p>Remember me </p>
                           <label
                             htmlFor="check"
@@ -93,11 +93,11 @@ const JoinGroup = ({toConfirmEmail, toggleModal}) => {
                           </label>
                         </div>
                       </div>
-                      <div className="pt-20 mb-10">
+                      <div className="lg:pt-20 sm:pt-2 lg:mb-10">
                         <button
                         onClick={toConfirmEmail}
                           type="submit"
-                          className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px]"
+                          className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
                         >
                           Join Group
                         </button>

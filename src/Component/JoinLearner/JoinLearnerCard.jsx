@@ -14,9 +14,9 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
   return (
     <div className="">
       <div className="h-screen flex justify-center items-center">
-        <div className="relative font-ver bg-gray-100 w-[602px] rounded-[15px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]">
+        <div className="relative font-ver bg-gray-100 lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
           <div className=" flex justify-between px-8 mt-10 border-b border-gray-200 pb-4">
-            <span className=" text-darkblue font-normal text-2xl">
+            <span className=" text-darkblue font-normal lg:text-2xl sm:text-[20px]">
               Join Group
             </span>
             <div onClick={toggleModal} className="cursor-pointer">
@@ -91,9 +91,9 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
           </div>
 
           {/* Select */}
-          <div className=" relative">
+          <div className=" sm:-mt-3 relative ">
             <div className=" px-8 pt-10 relative">
-              <div className=" p-2  px-8 border rounded-2xl absolute bg-white">
+              <div className=" bg-white sm:pl-20 sm:w-[270px] p-2  px-8 border rounded-2xl absolute z-50">
                 <div className=" flex gap-3">
                   <span className=" pr-2 text-[#0F172A80]">
                     {selectedStage ? selectedStage : "Select stage"}
@@ -127,8 +127,8 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
                   </div>
                 </div>
                 {showSelectStage && (
-                  <div className=" relative text-[#0F172A80]">
-                    <div className=" flex gap-2 p-2">
+                  <div className=" p-2 relative text-[#0F172A80]">
+                    <div className=" sm:-ml-10 flex gap-2 p-2">
                       <input
                         onChange={(e) => {
                           setSelectedStage(e.target.value);
@@ -140,7 +140,7 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
                       />
                       <p>Beginner</p>
                     </div>
-                    <div className=" flex gap-2 p-2">
+                    <div className="sm:-ml-10 flex gap-2 p-2">
                       <input
                         onChange={(e) => {
                           setSelectedStage(e.target.value);
@@ -152,8 +152,9 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
                       />
                       <p>Intermediate</p>
                     </div>
-                    <div className=" flex gap-2 p-2">
+                    <div className="sm:-ml-10 flex gap-2 p-2 sm:pr-10">
                       <input
+                      className=""
                         onChange={(e) => {
                           setSelectedStage(e.target.value);
                           setShowSelectStage(!showSelectStage);
@@ -168,11 +169,13 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
                 )}
               </div>
             </div>
+
+
             {/* schedule session */}
-            <div className=" float-right p-2  px-8 mr-8  border rounded-2xl absolute bg-white right-0">
+            <div className=" bg-white sm:w-[270px] sm:mt-14 float-right p-2  px-8 mr-8  border rounded-2xl absolute sm:right-0 md:-mt-0">
               <div className="">
                 <div className=" flex gap-3 ">
-                  <span className=" pr-2 text-[#0F172A80]">
+                  <span className=" sm:pl-5 md:pl-0 pr-2 text-[#0F172A80]">
                     {selectedSession ? selectedSession : "Schedule session"}
                   </span>
                   <div
@@ -248,7 +251,7 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
           </div>
 
           {/* Button */}
-          <div className=" px-8 pt-20 mb-10">
+          <div className=" sm:mt-10 px-8 pt-20 mb-10">
             <button onClick={toSuccess} className=" text-white w-full bg-[#E76F51] rounded-full p-[10px] text-base font-normal">
               Join Group
             </button>

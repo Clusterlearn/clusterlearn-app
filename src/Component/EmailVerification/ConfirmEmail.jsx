@@ -15,7 +15,7 @@ const [modal, setModal] = useState(false);
     // fixed z-10 inset-0 overscroll-none bg-black bg-opacity-50
     <div className="">
       <div className="h-screen flex justify-center items-center">
-        <div className="relative modal-content font-ver  w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  px-12 py-12">
+        <div className="relative modal-content font-ver sm:w-[342px] lg:w-[602px] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  lg:px-12 sm:px-8 lg:py-12">
           <span
             className="cursor-pointer absolute top-7 right-6"
             onClick={toggleModal}
@@ -41,18 +41,18 @@ const [modal, setModal] = useState(false);
               />
             </svg>
           </span>
-          <h1 className="text-white text-center pt-20 text-4xl font-normal">
+          <h1 className="text-white text-center sm:pt-20 md:mt-20 md:text-4xl sm:text-[20px] font-normal :w-[245px]">
             Verification code <br /> sent!
           </h1>
-          <div className="flex flex-row justify-evenly items-center mt-40">
+          <div className="md:flex flex-row justify-evenly items-center md:mt-20 sm:mt-10 sm:mb-5 md:mb-0">
             <button
             onClick={toJoinLearner}
               type="button"
-              className="w-[175px] h-[60px] text-borderEmail text-xl font-normal bg-transparent border-2 rounded-[30px] border-borderEmail"
+              className="lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-borderEmail lg:text-xl font-normal bg-transparent border-2 rounded-[30px] border-borderEmail"
             >
               Join Group
             </button>
-            <button className="w-[175px] h-[60px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent">
+            <button className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent">
               Go to mail
             </button>
           </div>
