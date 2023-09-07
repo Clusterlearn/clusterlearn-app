@@ -1,10 +1,10 @@
-a:hover {
+/* a:hover {
     background: var(--yellow, #E9C46A);
     padding: 8px;
     border-radius: 5px;
     color: white;
     transition: 0.3s all;
-}
+} */
 /*
 body.active-modal {
     overflow-y: hidden;
