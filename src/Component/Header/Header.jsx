@@ -23,39 +23,36 @@ const Header = () => {
     setSuccess(false);
   };
 
-
   // CONFIRM EMAIL MODAL
   const toConfirmEmail = () => {
     setJoinGroupBtn(!joinGroupBtn); //true
-    setModal(!showModal) //false
+    setModal(!showModal); //false
   };
   const closeToConfirmEmail = () => {
-    setJoinGroupBtn(false)
-  }
+    setJoinGroupBtn(false);
+  };
 
   // JOIN LEARNER MODEL
   const toJoinLearner = () => {
-      setJoinLearnerBtn(!joinLearnerBtn); //true
-      // setJoinLearnerBtn(!joinLearnerBtn);
-      setJoinGroupBtn(!joinGroupBtn);   //fase 
+    setJoinLearnerBtn(!joinLearnerBtn); //true
+    // setJoinLearnerBtn(!joinLearnerBtn);
+    setJoinGroupBtn(!joinGroupBtn); //fase
     // setModal(!showModal)
-  }
+  };
   const closeToJoinLearner = () => {
-    setJoinLearnerBtn(false)
-  }
+    setJoinLearnerBtn(false);
+  };
 
   // SUCCESS MODAL
   const toSuccess = () => {
     setJoinLearnerBtn(!joinLearnerBtn); // false
     // setJoinGroupBtn(!joinGroupBtn)
-    setSuccess(!success)
+    setSuccess(!success);
     // setModal(false)
-
-  }
+  };
   const closeSuccess = () => {
-    setSuccess(false)
-  }
-
+    setSuccess(false);
+  };
 
   // if (modal) {
   //   document.body.classList.add("active-modal");
@@ -72,7 +69,10 @@ const Header = () => {
               {!showMenu && (
                 <>
                   <Logo Text={"CLUSTER"} />
-                  <button className=" w-[72px] h-[32px] p-[10px] flex justify-center items-center gap-[10px] border rounded-[25px] border-custom-color xl:hidden lg:hidden md:hidden ">
+                  <button
+                    className=" w-[72px] h-[32px] p-[10px] flex justify-center items-center gap-[10px] border rounded-[25px] border-custom-color xl:hidden lg:hidden md:hidden "
+                    onClick={toggleModal}
+                  >
                     Join
                   </button>
                 </>
@@ -89,7 +89,6 @@ const Header = () => {
                   ) : (
                     <div className=" w-80 float-right">
                       <svg
-                      
                         className=" mt-2 float-right "
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
@@ -135,9 +134,10 @@ const Header = () => {
               </li>
             </ul>
             <div>
-              <div onClick={toggleModal}>
+              <div className="">
                 <button
-                  className="w-20 hidden md:flex items-center justify-center rounded-lg"
+                  onClick={toggleModal}
+                  className=" w-20 hidden md:flex items-center justify-center rounded-lg"
                   style={{
                     border:
                       "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
@@ -155,25 +155,34 @@ const Header = () => {
             {/* card 1 */}
             <div className={` ${showModal ? "block" : "hidden"}`}>
               <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-                <JoinGroup toConfirmEmail={toConfirmEmail} toggleModal={toggleModal} />
+                <JoinGroup
+                  toConfirmEmail={toConfirmEmail}
+                  toggleModal={toggleModal}
+                />
               </div>
             </div>
             {/* card 2 */}
             <div className={`${joinGroupBtn ? "block" : "hidden"}`}>
               <div className="  bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-                <ConfirmEmail toJoinLearner={toJoinLearner} toggleModal={closeToConfirmEmail} />
+                <ConfirmEmail
+                  toJoinLearner={toJoinLearner}
+                  toggleModal={closeToConfirmEmail}
+                />
               </div>
             </div>
             {/* card 3 */}
             <div className={`${joinLearnerBtn ? "block" : "hidden"}`}>
               <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-                <JoinLearnerCard toSuccess={toSuccess} toggleModal={closeToJoinLearner}/>
+                <JoinLearnerCard
+                  toSuccess={toSuccess}
+                  toggleModal={closeToJoinLearner}
+                />
               </div>
             </div>
             {/* card 4 */}
             <div className={`${success ? "block" : "hidden"}`}>
               <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-                <Success toggleModal={closeSuccess}/>
+                <Success toggleModal={closeSuccess} />
               </div>
             </div>
           </div>
@@ -194,12 +203,10 @@ const Header = () => {
                   </li>
                 </ul>
                 <div className=" flex justify-center  mt-5 pt-20">
-                  <div
-                    className=" text-[20px] font-normal font-ver"
-                    onClick={toggleModal}
-                  >
+                  <div className=" text-[20px] font-normal font-ver">
                     <button
-                      className="w-20 flex items-center justify-center rounded-lg"
+                      onClick={toggleModal}
+                      className=" w-20 flex items-center justify-center rounded-lg"
                       style={{
                         border:
                           "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
