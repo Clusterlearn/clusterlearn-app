@@ -6,7 +6,7 @@ const frame = ({
   borderWidth,
   borderRadius,
 }) => {
-   
+
 
   const containerStyle = {
     border: `${borderWidth}px solid ${borderColor}`,
@@ -20,7 +20,7 @@ const frame = ({
   return (
     <div
       style={containerStyle}
-      className="rounded-full w-[82px] h-[82px] p-4 gap-3 justify-center items-center text-white
+      className="rounded-full w-[82px] h-[82px] p-4 gap-3 flex justify-center items-center text-white
             font-normal text-[36px] leading-[45px]
         "
     >
