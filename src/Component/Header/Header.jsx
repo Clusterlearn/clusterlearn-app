@@ -3,7 +3,6 @@ import "./Header.css";
 import AppContainer1 from "../AppContainer1/AppContainer1";
 import Logo from "../Logo/Logo";
 import { ReactComponent as HamburgerNav } from "../../../src/asset/HamburgerNav.svg";
-// import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import JoinGroup from "../JoinGroup/JoinGroup";
 import ConfirmEmail from "../EmailVerification/ConfirmEmail";
 import JoinLearnerCard from "../JoinLearner/JoinLearnerCard";
@@ -54,16 +53,9 @@ const Header = () => {
     setSuccess(false);
   };
 
-  // if (modal) {
-  //   document.body.classList.add("active-modal");
-  // } else {
-  //   document.body.classList.remove("active-modal");
-  // }
-
   return (
     <>
       <AppContainer1>
-        {/* <nav className=" relative md:flex md:justify-between md:items-center my-5 text-sm md:text-lg"> */}
         <div className="flex flex-row items-center md:justify-between py-5  text-sm md:text-lg">
           <div className="flex justify-between items-center sm:gap-4 md:gap-12">
             {!showMenu && (

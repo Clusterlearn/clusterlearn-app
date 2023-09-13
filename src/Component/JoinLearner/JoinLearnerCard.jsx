@@ -1,11 +1,14 @@
 import { useState } from "react";
 import close from "../../asset/close-o.svg";
+import { IoMdRadioButtonOn } from "react-icons/io";
 
-const JoinLearnerCard = ({toSuccess, toggleModal}) => {
+const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [showSelectStage, setShowSelectStage] = useState(false);
   const [selectedStage, setSelectedStage] = useState(null);
   const [showSelectedSession, setShowSelectedSession] = useState(false);
   const [selectedSession, setSelectedSession] = useState(null);
+  const [txtColorSelected, setTxtColorSelected] = useState(false);
+  const [txtColorSelected2, setTxtColorSelected2] = useState(false);
 
   // const click = () => {
   //   console.log("Clicked");
@@ -25,6 +28,8 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
           </div>
           {/* Email */}
           <div className=" px-8">
+            {/* <IoMdRadioButtonOn width={50} height={50} className=" text-[#E76F51]" /> */}
+
             <div className=" pt-4 text-darkblue font-normal text-base">
               Email
             </div>
@@ -95,7 +100,25 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
             <div className=" px-8 pt-10 relative">
               <div className=" bg-white sm:pl-20 sm:w-[270px] p-2  px-8 border rounded-2xl absolute z-50">
                 <div className=" flex gap-3">
-                  <span className=" pr-2 text-[#0F172A80]">
+                  {txtColorSelected && (
+                    <span className="pt-[5px] -ml-5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                      >
+                        <circle cx="7" cy="7" r="6.5" stroke="#E76F51" />
+                        <circle cx="7" cy="7" r="3" fill="#E76F51" />
+                      </svg>
+                    </span>
+                  )}
+                  <span
+                    className={` pr-2 ${
+                      txtColorSelected ? "text-black" : "text-[#0F172A80]"
+                    }`}
+                  >
                     {selectedStage ? selectedStage : "Select stage"}
                   </span>
                   <div
@@ -128,54 +151,94 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
                 </div>
                 {showSelectStage && (
                   <div className=" p-2 relative text-[#0F172A80]">
-                    <div className=" sm:-ml-10 flex gap-2 p-2">
+                    <div className=" sm:-ml-10 flex gap-2 p-2 hover:text-[#0F172A] font-ver">
                       <input
                         onChange={(e) => {
                           setSelectedStage(e.target.value);
                           setShowSelectStage(!showSelectStage);
+                          setTxtColorSelected(true);
                         }}
                         type="radio"
                         name="stage"
                         value="Biginner"
+                        id="beginner"
                       />
-                      <p>Beginner</p>
+                      <label
+                        htmlFor="beginner"
+                        className=" hover:cursor-pointer"
+                      >
+                        Beginner
+                      </label>
                     </div>
-                    <div className="sm:-ml-10 flex gap-2 p-2">
+
+                    <div className="sm:-ml-10 flex gap-2 p-2 hover:text-[#0F172A] font-ver">
                       <input
                         onChange={(e) => {
                           setSelectedStage(e.target.value);
                           setShowSelectStage(!showSelectStage);
+                          setTxtColorSelected(true);
                         }}
                         type="radio"
                         name="stage"
                         value="Intermediate"
+                        id="intermediate"
                       />
-                      <p>Intermediate</p>
+                      <label
+                        htmlFor="intermediate"
+                        className=" hover:cursor-pointer"
+                      >
+                        Intermediate
+                      </label>
                     </div>
-                    <div className="sm:-ml-10 flex gap-2 p-2 sm:pr-10">
+
+                    <div className="sm:-ml-10 flex gap-2 p-2 sm:pr-10 hover:text-[#0F172A] font-ver">
                       <input
-                      className=""
+                        className=""
                         onChange={(e) => {
                           setSelectedStage(e.target.value);
                           setShowSelectStage(!showSelectStage);
+                          setTxtColorSelected(true);
                         }}
                         type="radio"
                         name="stage"
                         value="Advance"
+                        id="advance"
                       />
-                      <p>Advanced</p>
+                      <label
+                        htmlFor="advance"
+                        className=" hover:cursor-pointer"
+                      >
+                        Advance
+                      </label>
                     </div>
                   </div>
                 )}
               </div>
             </div>
 
-
             {/* schedule session */}
             <div className=" bg-white sm:w-[270px] sm:mt-14 float-right p-2  px-8 mr-8  border rounded-2xl absolute sm:right-0 md:-mt-0">
               <div className="">
                 <div className=" flex gap-3 ">
-                  <span className=" sm:pl-5 md:pl-0 pr-2 text-[#0F172A80]">
+                  {txtColorSelected2 && (
+                    <span className=" ml-5 pt-[5px] ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                      >
+                        <circle cx="7" cy="7" r="6.5" stroke="#E76F51" />
+                        <circle cx="7" cy="7" r="3" fill="#E76F51" />
+                      </svg>
+                    </span>
+                  )}
+                  <span
+                    className={`sm:pl-5 md:pl-0 pr-2 text-[#0F172A80] ${
+                      txtColorSelected2 ? "text-black" : "text-[#0F172A80]"
+                    }`}
+                  >
                     {selectedSession ? selectedSession : "Schedule session"}
                   </span>
                   <div
@@ -209,41 +272,58 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
               </div>
               {showSelectedSession && (
                 <div className=" text-[#0F172A80] left-0 right-0 bg-white top-7 z-30  mt-2">
-                  <div className=" flex gap-2 p-2">
+                  <div className=" flex gap-2 p-2 hover:text-[#0F172A] font-ver">
                     <input
                       onChange={(e) => {
                         setSelectedSession(e.target.value);
                         setShowSelectedSession(!showSelectedSession);
+                        setTxtColorSelected2(true);
                       }}
                       type="radio"
                       name="session"
                       value="Morning"
+                      id="morning"
                     />
-                    <p>Morning</p>
+                    <label htmlFor="morning" className=" hover:cursor-pointer">
+                      Morning
+                    </label>
                   </div>
-                  <div className=" flex gap-2 p-2">
+
+                  <div className=" flex gap-2 p-2 hover:text-[#0F172A] font-ver">
                     <input
                       onChange={(e) => {
                         setSelectedSession(e.target.value);
                         setShowSelectedSession(!showSelectedSession);
+                        setTxtColorSelected2(true);
                       }}
                       type="radio"
                       name="session"
                       value="Afternoon"
+                      id="afternoon"
                     />
-                    <p>Afternoon</p>
+                    <label
+                      htmlFor="afternoon"
+                      className=" hover:cursor-pointer"
+                    >
+                      Afternoon
+                    </label>
                   </div>
-                  <div className=" flex gap-2 p-2">
+
+                  <div className=" flex gap-2 p-2 hover:text-[#0F172A] font-ver">
                     <input
                       onChange={(e) => {
                         setSelectedSession(e.target.value);
                         setShowSelectedSession(!showSelectedSession);
+                        setTxtColorSelected2(true);
                       }}
                       type="radio"
                       name="session"
                       value="Evening"
+                      id="evening"
                     />
-                    <p>Evening</p>
+                    <label htmlFor="evening" className=" hover:cursor-pointer">
+                      Evening
+                    </label>
                   </div>
                 </div>
               )}
@@ -252,7 +332,10 @@ const JoinLearnerCard = ({toSuccess, toggleModal}) => {
 
           {/* Button */}
           <div className=" sm:mt-10 px-8 pt-20 mb-10">
-            <button onClick={toSuccess} className=" text-white w-full bg-[#E76F51] rounded-full p-[10px] text-base font-normal">
+            <button
+              onClick={toSuccess}
+              className=" text-white w-full bg-[#E76F51] rounded-full p-[10px] text-base font-normal"
+            >
               Join Group
             </button>
           </div>
