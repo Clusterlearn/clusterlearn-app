@@ -57,12 +57,12 @@ const Header = () => {
     <>
       <AppContainer1>
         <div className="flex flex-row items-center md:justify-between py-5  text-sm md:text-lg">
-          <div className="flex justify-between items-center sm:gap-4 md:gap-12">
+          <div className="flex justify-between items-center sm:gap-8 md:gap-12">
             {!showMenu && (
               <>
                 <Logo Text={"CLUSTER"} />
                 <button
-                  className=" w-[62px] h-[29px] p-[6px] flex justify-center items-center gap-[5px] border rounded-[25px] border-custom-color xl:hidden lg:hidden md:hidden "
+                  className=" w-[62px] h-[29px] p-[6px] flex justify-center items-center  border rounded-[25px] border-custom-color xl:hidden lg:hidden md:hidden "
                   onClick={toggleModal}
                 >
                   Join

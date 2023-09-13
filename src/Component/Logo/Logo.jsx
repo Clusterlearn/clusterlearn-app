@@ -3,7 +3,7 @@ import React from "react";
 const Logo = ({ Text }) => {
   return (
     <div>
-      <div className="font-times text-lg font-normal cursor-pointer">
+      <div className="relative font-times text-lg mr-10 font-normal cursor-pointer">
         <a href="#home">
           <h2 className="text-logo-left">
             {Text}
