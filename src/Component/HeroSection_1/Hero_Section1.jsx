@@ -10,7 +10,7 @@ function Hero_Section1() {
       <AppContainer1>
         <div
           id="home"
-          className=" relative md:flex lg:justify-center md:justify-center lg:items-center md:items-center md:gap-28 gap-0 overflow-hidden"
+          className="  relative md:flex lg:justify-center md:justify-center lg:items-center md:items-center md:gap-28 gap-0 overflow-hidden"
         >
           <div className="lg:-mt-20 lg:text-start md:text-start sm:mt-20 ">
             <p className="md:my-7 lg:my-7 my-3 text-logo-left lg:text-[16] md:text-base  font-ver font-normal sm:text-[12px] sm:text-[#0F172A]">
