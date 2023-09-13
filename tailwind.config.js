@@ -10,17 +10,11 @@ module.exports = {
 
     extend: {
       screens: {
-        sm: "100px", 
+        sm: "100px",
         md: "500px",
         // lg: "976px",820
         // xl: "1440px", 976
       },
-
-      // container: {
-      //   sm: "300px",
-      //   md: "500px",
-      //   lg: "600px",
-      // },
       colors: {
         logo: {
           left: "#0F172A",
@@ -32,24 +26,6 @@ module.exports = {
         "testimonial-color-bg-2": "rgba(42, 157, 143, 0.08)",
         borderEmail: "rgba(255, 255, 255, 0.70)",
       },
-
-      // fontSize: {
-      //   sm: "0.8rem",
-      //   base: "1rem",
-      //   xl: "1.25rem",
-      //   "2xl": "1.563rem",
-      //   "3xl": "1.953rem",
-      //   "4xl": "2.441rem",
-      //   "5xl": "3.052rem",
-      // },
-      // spacing: {
-      //   1: "8px",
-      //   2: "12px",
-      //   3: "16px",
-      //   4: "24px",
-      //   5: "32px",
-      //   6: "48px",
-      // },
     },
   },
   plugins: [],

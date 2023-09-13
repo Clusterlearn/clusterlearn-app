@@ -9,8 +9,12 @@ function Testimonial() {
   return (
     <AppContainer1>
       <div>
-        <div id="testimonial" className="md:flex md:flex-row gap-10 w-full mt-40 overflow-hidden">
-          <span className=" max-w-1/2 lg:bg-testimonial-color-bg-1 md:bg-testimonial-color-bg-1 w-[660px] h-[512px] rounded-xl"
+        <div
+          id="testimonial"
+          className="md:flex md:flex-row gap-10 w-full md:mt-40 overflow-hidden"
+        >
+          <span
+            className=" lg:bg-testimonial-color-bg-1 md:bg-testimonial-color-bg-1 w-[660px] h-[512px] rounded-xl"
           >
             <h1 className=" sm:text-[14px] font-ver font-normal md:leading-[45px] lg:leading-[45px] text-center px-5 py-20 md:w-[540px] lg:w-[540px] nmd:h-[220px] lg:h-[220px] text-darkblue md:text-[28px] lg:text-[28px]">
               “I have connected with up to 10 groups through my development
@@ -34,7 +38,7 @@ function Testimonial() {
             </div>
           </span>
 
-          <span className="max-w-1/2 bg-testimonial-color-bg-2 w-[660px] h-[512px] rounded-xl">
+          <span className=" lg:bg-testimonial-color-bg-2 md:bg-testimonial-color-bg-2 sm:bg-testimonial-color-bg-2  w-[660px] h-[512px] rounded-xl">
             <h1 className="sm:text-[14px] font-ver font-normal md:leading-[45px] lg:leading-[45px] text-center px-5 py-20 md:w-[540px] lg:w-[540px] nmd:h-[220px] lg:h-[220px] text-darkblue md:text-[28px] lg:text-[28px]">
               “I have connected with up to 10 groups through my development
               process. And my groups has been so helpful throughout”
