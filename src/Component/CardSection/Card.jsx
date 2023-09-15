@@ -5,7 +5,7 @@ import Card2 from "../../../src/asset/card-2.png";
 import Card3 from "../../../src/asset/card-3.png";
 import Card4 from "../../../src/asset/card4.png";
 import Card5 from "../../../src/asset/card5.png";
-import AppContainer1 from "../AppContainer1/AppContainer1";
+
 
 function Card() {
   return (
@@ -95,8 +95,6 @@ function Card() {
           {/* line */}
           <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
-
-
           {/* fourth card */}
           <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
             <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
@@ -114,7 +112,7 @@ function Card() {
                   <span className="text-[16px] font-normal text-[#0F172A] font-ver cursor-pointer border-b border-[#0F172A]">
                     Join Learner &gt;
                   </span>
-                  </div>
+                </div>
               </div>
             </div>
             <div className=" max-h-full order-first">
@@ -125,10 +123,8 @@ function Card() {
           {/* line */}
           <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
-
-
           {/* fifth card */}
-          <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+          <div className="px-10 flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  my-40">
             <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame
                 digit={"05"}
@@ -157,8 +153,6 @@ function Card() {
               <img src={Card5} alt="card 5" />
             </div>
           </div>
-
-          
         </div>
       </div>
     </div>

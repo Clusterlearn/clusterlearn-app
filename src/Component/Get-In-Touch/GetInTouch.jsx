@@ -1,33 +1,21 @@
 import React from "react";
-import Button from "../Button/Button";
-import AppContainer1 from "../AppContainer1/AppContainer1";
 import Logo from "../Logo/Logo";
-import {Link} from "react-router-dom"
+// import {Link} from "react-router-dom"
 
 function GetInTouch() {
   return (
-    <AppContainer1>
-      <div  className=" flex items-center justify-center mt-40 relative cursor-pointer font-ver font-normal">
-        <h1 className=" text-white text-2xl text-center absolute">
-          Get In touch
-          <br /> with the <br />
-          latest <span className="text-logo-left text-[32px]">
-          NEWS</span>
+    <>
+      <div className="relative grid place-items-center w-full h-full mt-40 cursor-pointer font-ver font-normal">
+        <h1 className="text-2xl text-white bg-logo-right xl:px-[182px] xl:py-[182px] md:px-[100px] md:py-[100px] sm:px-[80px] sm:py-[80px] rounded-[100%]">
+          Get In touch <br /> with the <br />
+          latest
+          <span className="text-logo-left text-[32px] pl-2">NEWS</span>
         </h1>
-        <Link to="/Hello">
-          <Button
-            bgColor={"#E76F51"}
-            width={"392px"}
-            height={"392px"}
-            borderColor={"#E76F51"}
-            borderRadius={392}
-          ></Button>
-        </Link>
       </div>
       <div className="mt-40">
         <Logo Text={"CLUSTER"} />
       </div>
-    </AppContainer1>
+    </>
   );
 }
 
