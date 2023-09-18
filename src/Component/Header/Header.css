@@ -25,3 +25,8 @@ body.active-modal {
 .overlay {
     background: rgba(49, 49, 49, 0.8);
 } */
+
+.custom-ml-auto{
+    margin-left: auto;
+    background-color: black;
+}
