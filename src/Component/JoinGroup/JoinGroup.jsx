@@ -5,8 +5,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CloseCircle } from "../../../src/asset/CloseCircle.svg";
 import { ReactComponent as EmailIcon } from "../../../src/asset/EmailIcon.svg";
 
-// toConfirmEmail ,
-const JoinGroup = ({ toggleModal}) => {
+
+const JoinGroup = ({toConfirmEmail , toggleModal}) => {
  const [isChecked, setIsChecked] = useState(false);
 
  const dynamicBorderStyle = isChecked ? "border-[#E76F51]" : "border-[#0F172A]";
@@ -125,7 +125,7 @@ const JoinGroup = ({ toggleModal}) => {
                         <div className="lg:pt-20 sm:pt-2 lg:mb-10">
                           <button
                             disabled={isSubmitting}
-                            // onClick={toConfirmEmail}
+                            onClick={toConfirmEmail}
                             type="button"
                             className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
                           >
