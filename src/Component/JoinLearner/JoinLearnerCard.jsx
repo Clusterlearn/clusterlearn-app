@@ -10,9 +10,6 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [txtColorSelected, setTxtColorSelected] = useState(false);
   const [txtColorSelected2, setTxtColorSelected2] = useState(false);
 
-  // const click = () => {
-  //   console.log("Clicked");
-  // }
 
   return (
     <div className="">

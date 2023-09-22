@@ -1,33 +1,48 @@
 import React, { useState } from "react";
+import axios from "axios";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CloseCircle } from "../../../src/asset/CloseCircle.svg";
 import { ReactComponent as EmailIcon } from "../../../src/asset/EmailIcon.svg";
 
-
-const JoinGroup = ({toConfirmEmail, toggleModal}) => {
+// toConfirmEmail ,
+const JoinGroup = ({ toggleModal}) => {
  const [isChecked, setIsChecked] = useState(false);
- const [modal, setModal] = useState(false);
-
 
  const dynamicBorderStyle = isChecked ? "border-[#E76F51]" : "border-[#0F172A]";
 
- const validationSchema = Yup.object().shape({
-   email: Yup.string().email("Invalid email").required("Email is required"),
- });
 
- const initialValues = {
-   email: "",
- };
+  const initialValues = {
+    email : "",
+  };
 
-//  const toggleModal = () => {
-//    setModal(modal);
-//  };
+   const validationSchema = Yup.object().shape({
+     email: Yup.string()
+       .email("Invalid email address")
+       .required("Email is required"),
 
- const handleSubmit = (values) => {
-   // Handle form submission here
-   console.log(values);
- };
+   });
+
+     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+       try {
+         const response = await axios.post(
+           "https://clusterlearn.cyclic.app/api/your-post-endpoint",
+           values
+         );
+
+         if (response.status === 200) {
+          
+           console.log("Form submitted successfully.");
+           resetForm();
+         } else {
+           console.error("Form submission failed.");
+         }
+       } catch (error) {
+         console.error("Error:", error);
+       }
+
+       setSubmitting(false);
+     };
 
 
     return (
@@ -50,60 +65,68 @@ const JoinGroup = ({toConfirmEmail, toggleModal}) => {
                 {/* Form */}
                 <Formik
                   initialValues={initialValues}
-                  onSubmit={handleSubmit}
                   validationSchema={validationSchema}
+                  onSubmit={handleSubmit}
                 >
-                  <Form>
-                    <div className="flex flex-col px-8">
-                      <label className="lg:text-xl md:text-xl sm:[16px] text-darkblue font-normal leading-6 md:mt-16 lg:mt-16 sm:mt-8">
-                        Email
-                      </label>
-                      <div className="relative flex items-center text-darkblue focus-within:text-darkblue ">
-                        <EmailIcon className="absolute ml-3 mt-5 text-darkblue pointer-events-none" />
-                        <Field
-                          className="pr-3 pl-12 py-3  w-full text-xl text-darkblue font-normal rounded-[30px] placeholder:text-darkblue placeholder:text-xl border-none ring-2 ring-darkblue focus:ring-2 leading-6 mt-5 "
-                          type="email"
-                          id="email"
-                          name="email"
-                          autoComplete="disable"
-                          placeholder="Enter email address"
-                        />
-                      </div>
-                      <div className="text-red-600 mt-2">
-                        <ErrorMessage name="email" />
-                      </div>
+                  {({ isSubmitting }) => (
+                    <Form>
+                      <div className="flex flex-col px-8">
+                        <label className="lg:text-xl md:text-xl sm:[16px] text-darkblue font-normal leading-6 md:mt-16 lg:mt-16 sm:mt-8">
+                          Email
+                        </label>
+                        <div className="relative flex items-center text-darkblue focus-within:text-darkblue ">
+                          <EmailIcon className="absolute ml-3 mt-5 text-darkblue pointer-events-none" />
+                          <Field
+                            // onChange={handleInput}
+                            className="pr-3 pl-12 py-3  w-full text-xl text-darkblue font-normal rounded-[30px] placeholder:text-darkblue placeholder:text-xl border-none ring-2 ring-darkblue focus:ring-2 leading-6 mt-5 "
+                            type="email"
+                            id="email"
+                            name="email"
+                            autoComplete="disable"
+                            placeholder="Enter email address"
+                          />
+                        </div>
+                        <div className="text-red-600 mt-2">
+                          <ErrorMessage
+                            name="email"
+                            component="div"
+                            className="error"
+                          />
+                        </div>
 
-                      <div className="flex flex-row-reverse">
-                        <div className="flex flex-row gap-2 lg:mr-8 mt-5 items-center">
-                          <p>Remember me </p>
-                          <label
-                            htmlFor="check"
-                            className={`relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
-                          >
-                            <input
-                              type="checkbox"
-                              id="check"
-                              className="peer sr-only"
-                              onClick={() => setIsChecked(!isChecked)}
-                            />
-                            <span
-                              className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full
+                        <div className="flex flex-row-reverse">
+                          <div className="flex flex-row gap-2 lg:mr-8 mt-5 items-center">
+                            <p>Remember me </p>
+                            <label
+                              htmlFor="check"
+                              className={`relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
+                            >
+                              <input
+                                type="checkbox"
+                                id="check"
+                                className="peer sr-only"
+                                onClick={() => setIsChecked(!isChecked)}
+                              />
+                              <span
+                                className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full
                          top-0 bottom-0 peer-checked:bg-[#E76F51]  peer-checked:left-3 transition-all duration-500"
-                            ></span>
-                          </label>
+                              ></span>
+                            </label>
+                          </div>
+                        </div>
+                        <div className="lg:pt-20 sm:pt-2 lg:mb-10">
+                          <button
+                            disabled={isSubmitting}
+                            // onClick={toConfirmEmail}
+                            type="button"
+                            className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
+                          >
+                            Join Group
+                          </button>
                         </div>
                       </div>
-                      <div className="lg:pt-20 sm:pt-2 lg:mb-10">
-                        <button
-                        onClick={toConfirmEmail}
-                          type="submit"
-                          className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
-                        >
-                          Join Group
-                        </button>
-                      </div>
-                    </div>
-                  </Form>
+                    </Form>
+                  )}
                 </Formik>
               </div>
             </div>
