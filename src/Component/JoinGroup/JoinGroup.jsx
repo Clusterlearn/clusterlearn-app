@@ -13,25 +13,27 @@ const JoinGroup = ({ toggleModal}) => {
 
 
   const initialValues = {
-    email : "",
+    email: "",
+    rememberEmail: false,
   };
 
    const validationSchema = Yup.object().shape({
      email: Yup.string()
        .email("Invalid email address")
        .required("Email is required"),
-
+     rememberEmail: Yup.boolean()
+       .oneOf([true], "check the button if you want your email remembered")
+       .required("check the button if you want your email remembered"),
    });
 
      const handleSubmit = async (values, { setSubmitting, resetForm }) => {
        try {
          const response = await axios.post(
-           "https://clusterlearn.cyclic.app/api/your-post-endpoint",
+           "https://clusterlearn.cyclic.app/",
            values
          );
 
          if (response.status === 200) {
-          
            console.log("Form submitted successfully.");
            resetForm();
          } else {
@@ -104,14 +106,20 @@ const JoinGroup = ({ toggleModal}) => {
                               <input
                                 type="checkbox"
                                 id="check"
+                                name="rememberEmail"
                                 className="peer sr-only"
                                 onClick={() => setIsChecked(!isChecked)}
                               />
                               <span
                                 className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full
-                         top-0 bottom-0 peer-checked:bg-[#E76F51]  peer-checked:left-3 transition-all duration-500"
+                                top-0 bottom-0 peer-checked:bg-[#E76F51]  peer-checked:left-3 transition-all duration-500"
                               ></span>
                             </label>
+                            <ErrorMessage
+                              name="agreeToTerms"
+                              component="div"
+                              className="error"
+                            />
                           </div>
                         </div>
                         <div className="lg:pt-20 sm:pt-2 lg:mb-10">
