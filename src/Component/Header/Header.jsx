@@ -15,6 +15,8 @@ const Header = () => {
   const [joinLearnerBtn, setJoinLearnerBtn] = useState(false);
   const [success, setSuccess] = useState(false);
 
+
+  // JOIN GROUP MODAL
   const toggleModal = () => {
     setModal(!showModal);
     setJoinGroupBtn(false);
@@ -22,11 +24,12 @@ const Header = () => {
     setSuccess(false);
   };
 
-  // CONFIRM EMAIL MODAL
+  // CONFIRM EMAIL MODEL
   const toConfirmEmail = () => {
     setJoinGroupBtn(!joinGroupBtn); //true
     setModal(!showModal); //false
   };
+  
   const closeToConfirmEmail = () => {
     setJoinGroupBtn(false);
   };
@@ -137,6 +140,7 @@ const Header = () => {
         </section>
       </div>
       {/* </nav> */}
+
       {/* TOGGLE OF ALL THE MODAL CARDS */}
       {/* TOGGLE OF ALL THE MODAL CARDS */}
       <div className="">

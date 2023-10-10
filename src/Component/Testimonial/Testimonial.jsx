@@ -6,7 +6,7 @@ import AppContainer1 from "../AppContainer1/AppContainer1";
 function Testimonial() {
   return (
     <AppContainer1>
-      <div class="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-8 sm:gap-5 w-[692px] h-[612px] sm:w-[362px] md:h-full md:w-full">
+      <div class="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 xl:gap-8 sm:gap-5 w-full h-full lg:w-full lg:h-full md:h-full md:w-full sm:w-[320px]">
         <div class="bg-testimonial-color-bg-1 rounded-xl shadow-md xl:mt-20 sm:mt-20  py-8 px-7">
           <h1 className="font-ver text-center font-normal xl:leading-[45px] px-7  text-darkblue lg:text-[28px]  sm:text-[14px] ">
             “I have connected with up to 10 groups through my development
