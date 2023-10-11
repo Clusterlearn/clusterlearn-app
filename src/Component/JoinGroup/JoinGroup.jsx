@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -17,7 +17,15 @@ function validateEmail(value) {
 
 const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [email, setEEmail] = useState("");
+  const [monitor, setMonitor] = useState(false)
 
+  useEffect(()=> {
+    localStorage.setItem("email", email)
+  }, [monitor])
+
+  // console.log("check email", email);
+ 
   const dynamicBorderStyle = isChecked
     ? "border-[#E76F51]"
     : "border-[#0F172A]";
@@ -46,6 +54,8 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                 }}
                 onSubmit={async (values) => {
                   // same shape as initial values
+                  setEEmail(values.email)
+                  setMonitor(true)
                   console.log(values);
                   try {
                     const response = await axios.post(
@@ -80,9 +90,10 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                           autoComplete="disable"
                           placeholder="Enter email address"
                           validate={validateEmail}
+                          onClick={(e)=>{setEEmail(e.target.value)}}
                         />
                       </div>
-                      <div className="text-red-600 mt-2">
+                      <div className="text-red-600 mt-2 text-sm">
                         {errors.email && touched.email && (
                           <div>{errors.email}</div>
                         )}
@@ -104,7 +115,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                               onClick={() => setIsChecked(!isChecked)}
                             />
                             <span
-                              className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full
+                              className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full px-1
                                 top-0 bottom-0 peer-checked:bg-[#E76F51]  peer-checked:left-3 transition-all duration-500"
                             ></span>
                           </label>

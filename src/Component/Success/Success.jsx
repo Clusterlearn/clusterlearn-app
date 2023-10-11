@@ -38,7 +38,9 @@ const Success = ({ toggleModal }) => {
                         </div>
 
                         <div className=" flex justify-center lg:mt-10 sm:mt-10" >
+                        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
                             <button className=" bg-white md:w-[185px] sm:w-[282px] md:h-[50px] sm:h-[40px] p-[10px] md:rounded-[30px] sm:rounded-[45px] "><span className="w-[117px] leading-[24px] font-ver font-normal text-[20px] text-[#E76F51]">Go to Email</span></button>
+                            </a>
                         </div>
                     </div>
                 </div>

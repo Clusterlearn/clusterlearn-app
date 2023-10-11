@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import close from "../../asset/close-o.svg";
 import { IoMdRadioButtonOn } from "react-icons/io";
 
@@ -9,7 +9,29 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [selectedSession, setSelectedSession] = useState(null);
   const [txtColorSelected, setTxtColorSelected] = useState(false);
   const [txtColorSelected2, setTxtColorSelected2] = useState(false);
+  const [getEmail, setGetEmail] = useState(false);
+  const [email, setEEmail] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
 
+  console.log(verificationCode);
+
+  const interval = setInterval(() => {
+    const email = localStorage.getItem("email");
+    console.log("in this page", email);
+    setEEmail(email);
+    if (getEmail !== "") {
+      setGetEmail(true);
+    }
+
+    if (getEmail !== "") {
+      clearInterval(interval);
+    }
+  }, [5000]);
+
+  // function to verify if the code sent === the code inputed
+  const verifyCodeAndProceed = () => {
+    
+  };
 
   return (
     <div className="">
@@ -51,6 +73,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
               </div>
 
               <input
+                value={email}
                 type="text"
                 placeholder="izebeayotei@gmail.com"
                 className=" w-full"
@@ -85,6 +108,10 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
               </div>
 
               <input
+                onChange={(e) => {
+                  setVerificationCode(e.target.value);
+                  console.log(e.target.value);
+                }}
                 type="text"
                 placeholder="Enter verification code"
                 className=" w-full"
@@ -94,7 +121,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
 
           {/* Select */}
           <div className=" sm:-mt-3 relative ">
-            <div className=" px-8 pt-10 relative">
+            {/* <div className=" px-8 pt-10 relative">
               <div className=" bg-white sm:pl-20 sm:w-[270px] p-2  px-8 border rounded-2xl absolute z-50">
                 <div className=" flex gap-3">
                   {txtColorSelected && (
@@ -211,10 +238,10 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* schedule session */}
-            <div className=" bg-white sm:w-[270px] sm:mt-14 float-right p-2  px-8 mr-8  border rounded-2xl absolute sm:right-0 md:-mt-0">
+            {/* <div className=" bg-white sm:w-[270px] sm:mt-14 float-right p-2  px-8 mr-8  border rounded-2xl absolute sm:right-0 md:-mt-0">
               <div className="">
                 <div className=" flex gap-3 ">
                   {txtColorSelected2 && (
@@ -324,13 +351,14 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
 
           {/* Button */}
           <div className=" sm:mt-10 px-8 pt-20 mb-10">
             <button
-              onClick={toSuccess}
+              // onClick={toSuccess}
+              onClick={verifyCodeAndProceed}
               className=" text-white w-full bg-[#E76F51] rounded-full p-[10px] text-base font-normal"
             >
               Join Group

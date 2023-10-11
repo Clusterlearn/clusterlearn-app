@@ -52,9 +52,11 @@ const [modal, setModal] = useState(false);
             >
               Join Group
             </button>
+            <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
             <button className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent">
               Go to mail
             </button>
+            </a>
           </div>
         </div>
       </div>

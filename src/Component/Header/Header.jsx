@@ -22,6 +22,7 @@ const Header = () => {
     setJoinGroupBtn(false);
     setJoinLearnerBtn(false);
     setSuccess(false);
+    // localStorage.clear()
   };
 
   // CONFIRM EMAIL MODEL
@@ -130,9 +131,9 @@ const Header = () => {
         <section>
           <button
             onClick={toggleModal}
-            className=" w-20 hidden md:flex items-center justify-center rounded-lg"
+            className="hover:bg-[#E76F51] border border-black hover:border-[#E76F51] hover:text-white ease-in-out duration-300 w-20 hidden md:flex items-center justify-center rounded-lg"
             style={{
-              border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
+              // border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
             }}
           >
             Join
