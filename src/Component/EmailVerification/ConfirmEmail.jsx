@@ -1,14 +1,37 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-const ConfirmEmail = ({toJoinLearner, toggleModal}) => {
+const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
+  const [getEmail, setGetEmail] = useState(false);
+  const [email, setEEmail] = useState("");
+  // const [modal, setModal] = useState(false);
 
-const [modal, setModal] = useState(false);
+  // const toggleModal = () => {
+  //   setModal(!modal);
+  // };
 
+  const interval = setInterval(() => {
+    const email = localStorage.getItem("email");
+    // console.log("in this page", email);
+    setEEmail(email);
+    if (getEmail !== "") {
+      setGetEmail(true);
+    }
 
-// const toggleModal = () => {
-//   setModal(!modal);
-// };
+    if (getEmail !== "") {
+      clearInterval(interval);
+    }
+  }, [5000]);
 
+  const redirectToEmail = () => {
+    const atPos = email.indexOf("@")
+    const hoester = email.substring(atPos + 1);
+    return `https://www.${hoester}`
+  };
+  const handleRedirect = () => {
+    const emailLink = redirectToEmail();
+
+    window.open(emailLink, "_blank")
+  }
 
 
   return (
@@ -46,22 +69,26 @@ const [modal, setModal] = useState(false);
           </h1>
           <div className="md:flex flex-row justify-evenly items-center md:mt-20 sm:mt-10 sm:mb-5 md:mb-0">
             <button
-            onClick={toJoinLearner}
+              onClick={toJoinLearner}
               type="button"
               className="lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-borderEmail lg:text-xl font-normal bg-transparent border-2 rounded-[30px] border-borderEmail"
             >
               Join Group
             </button>
-            <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
-            <button className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent">
-              Go to mail
-            </button>
-            </a>
+
+            
+              <button
+                onClick={handleRedirect}
+                className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent"
+              >
+                Go to mail
+              </button>
+            
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default ConfirmEmail;

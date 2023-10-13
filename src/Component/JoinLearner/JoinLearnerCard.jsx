@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import close from "../../asset/close-o.svg";
 import { IoMdRadioButtonOn } from "react-icons/io";
+import axios from "axios";
 
 const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [showSelectStage, setShowSelectStage] = useState(false);
@@ -12,8 +13,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [getEmail, setGetEmail] = useState(false);
   const [email, setEEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
-
-  console.log(verificationCode);
+  const [err, setErr] = useState(false);
 
   const interval = setInterval(() => {
     const email = localStorage.getItem("email");
@@ -29,16 +29,49 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   }, [5000]);
 
   // function to verify if the code sent === the code inputed
-  const verifyCodeAndProceed = () => {
-    
+  const verifyCodeAndProceed = async () => {
+    if (!verificationCode) {
+      console.log("Rubbish code");
+      setErr(true);
+      return;
+    }
+
+    const data = {
+      email,
+      verificationCode,
+      rememberMe: true,
+    };
+    const jsonData = JSON.stringify(data)
+
+    const response = await axios.post(
+      "https://clusterlearn.cyclic.app/user/verify",
+      jsonData
+    );
+    try {
+      console.log(response.status);
+      toSuccess()
+    } catch (err) {
+      console.log(err.response.status);
+      console.log(err.response.data);
+      console.log(err);
+    }
   };
+  //   if (response.status === 200){
+  //     console.log("For submitted succefully :)");
+  //     toSuccess(true)
+  //   } else {
+  //     console.log("Could not submit form :(");
+  //   }
+  // } catch (err){
+  //   console.log("Error:", err);
+  // }
 
   return (
     <div className="">
       <div className="h-screen flex justify-center items-center">
         <div className="relative font-ver bg-gray-100 lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
           <div className=" flex justify-between px-8 mt-10 border-b border-gray-200 pb-4">
-            <span className=" text-darkblue font-normal lg:text-2xl sm:text-[20px]">
+            <span className=" font-normal lg:text-2xl sm:text-[20px] text-darkblue">
               Join Group
             </span>
             <div onClick={toggleModal} className="cursor-pointer">
@@ -110,13 +143,18 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
               <input
                 onChange={(e) => {
                   setVerificationCode(e.target.value);
-                  console.log(e.target.value);
+                  // console.log(e.target.value);
                 }}
                 type="text"
                 placeholder="Enter verification code"
                 className=" w-full"
               />
             </div>
+            {err && (
+              <div className=" ml-2 text-red-500">
+                Verification can't be empty
+              </div>
+            )}
           </div>
 
           {/* Select */}
@@ -355,7 +393,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
           </div>
 
           {/* Button */}
-          <div className=" sm:mt-10 px-8 pt-20 mb-10">
+          <div className=" sm:mt-10 px-8 pt-16 mb-10">
             <button
               // onClick={toSuccess}
               onClick={verifyCodeAndProceed}
