@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import close from "../../asset/close-o.svg";
 import { IoMdRadioButtonOn } from "react-icons/io";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [showSelectStage, setShowSelectStage] = useState(false);
@@ -38,23 +39,39 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
 
     const data = {
       email,
-      verificationCode,
+      code: verificationCode,
       rememberMe: true,
     };
-    const jsonData = JSON.stringify(data)
 
-    const response = await axios.post(
-      "https://clusterlearn.cyclic.app/user/verify",
-      jsonData
-    );
     try {
-      console.log(response.status);
+
+      const response = await axios.post('https://clusterlearn.cyclic.app/user/verify', data)
+
+      const message = response?.data?.data?.message
+      const deviceToken = response?.data?.data?.deviceToken
+
+      localStorage.setItem("deviceToken", deviceToken)
+
+      toast.success(message)
+
       toSuccess()
-    } catch (err) {
-      console.log(err.response.status);
-      console.log(err.response.data);
-      console.log(err);
+
+    } catch (error) {
+
+
+      const message =
+        error.response.data.data.error || error.response.data.data.status ||
+        (error.response &&
+          error.response.data &&
+          error.response.data.data.message) ||
+        error.message ||
+        error.toString();
+
+      toast.error(message)
+      console.log(message);
+
     }
+
   };
   //   if (response.status === 200){
   //     console.log("For submitted succefully :)");

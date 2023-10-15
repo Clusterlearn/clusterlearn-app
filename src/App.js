@@ -4,6 +4,7 @@ import Footer from './Component/Footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './Page/Home';
 import axios from "axios"
+import { Toaster } from 'react-hot-toast'
 
 
 
@@ -25,6 +26,12 @@ function App() {
         </div>
         <Footer />
       </div>
+
+      <Toaster
+        position="top-center"
+        reverseOrder={true}
+      />
+
     </Router>
   );
 }
