@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import close from "../../asset/close-o.svg";
 import { IoMdRadioButtonOn } from "react-icons/io";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [showSelectStage, setShowSelectStage] = useState(false);
@@ -9,14 +11,84 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [selectedSession, setSelectedSession] = useState(null);
   const [txtColorSelected, setTxtColorSelected] = useState(false);
   const [txtColorSelected2, setTxtColorSelected2] = useState(false);
+  const [getEmail, setGetEmail] = useState(false);
+  const [email, setEEmail] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [err, setErr] = useState(false);
 
+  const interval = setInterval(() => {
+    const email = localStorage.getItem("email");
+    console.log("in this page", email);
+    setEEmail(email);
+    if (getEmail !== "") {
+      setGetEmail(true);
+    }
+
+    if (getEmail !== "") {
+      clearInterval(interval);
+    }
+  }, [5000]);
+
+  // function to verify if the code sent === the code inputed
+  const verifyCodeAndProceed = async () => {
+    if (!verificationCode) {
+      console.log("Rubbish code");
+      setErr(true);
+      return;
+    }
+
+    const data = {
+      email,
+      code: verificationCode,
+      rememberMe: true,
+    };
+
+    try {
+
+      const response = await axios.post('https://clusterlearn.cyclic.app/user/verify', data)
+
+      const message = response?.data?.data?.message
+      const deviceToken = response?.data?.data?.deviceToken
+
+      localStorage.setItem("deviceToken", deviceToken)
+
+      toast.success(message)
+
+      toSuccess()
+
+    } catch (error) {
+
+
+      const message =
+        error.response.data.data.error || error.response.data.data.status ||
+        (error.response &&
+          error.response.data &&
+          error.response.data.data.message) ||
+        error.message ||
+        error.toString();
+
+      toast.error(message)
+      console.log(message);
+
+    }
+
+  };
+  //   if (response.status === 200){
+  //     console.log("For submitted succefully :)");
+  //     toSuccess(true)
+  //   } else {
+  //     console.log("Could not submit form :(");
+  //   }
+  // } catch (err){
+  //   console.log("Error:", err);
+  // }
 
   return (
     <div className="">
       <div className="h-screen flex justify-center items-center">
         <div className="relative font-ver bg-gray-100 lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
           <div className=" flex justify-between px-8 mt-10 border-b border-gray-200 pb-4">
-            <span className=" text-darkblue font-normal lg:text-2xl sm:text-[20px]">
+            <span className=" font-normal lg:text-2xl sm:text-[20px] text-darkblue">
               Join Group
             </span>
             <div onClick={toggleModal} className="cursor-pointer">
@@ -51,6 +123,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
               </div>
 
               <input
+                value={email}
                 type="text"
                 placeholder="izebeayotei@gmail.com"
                 className=" w-full"
@@ -85,16 +158,25 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
               </div>
 
               <input
+                onChange={(e) => {
+                  setVerificationCode(e.target.value);
+                  // console.log(e.target.value);
+                }}
                 type="text"
                 placeholder="Enter verification code"
                 className=" w-full"
               />
             </div>
+            {err && (
+              <div className=" ml-2 text-red-500">
+                Verification can't be empty
+              </div>
+            )}
           </div>
 
           {/* Select */}
           <div className=" sm:-mt-3 relative ">
-            <div className=" px-8 pt-10 relative">
+            {/* <div className=" px-8 pt-10 relative">
               <div className=" bg-white sm:pl-20 sm:w-[270px] p-2  px-8 border rounded-2xl absolute z-50">
                 <div className=" flex gap-3">
                   {txtColorSelected && (
@@ -211,10 +293,10 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* schedule session */}
-            <div className=" bg-white sm:w-[270px] sm:mt-14 float-right p-2  px-8 mr-8  border rounded-2xl absolute sm:right-0 md:-mt-0">
+            {/* <div className=" bg-white sm:w-[270px] sm:mt-14 float-right p-2  px-8 mr-8  border rounded-2xl absolute sm:right-0 md:-mt-0">
               <div className="">
                 <div className=" flex gap-3 ">
                   {txtColorSelected2 && (
@@ -324,13 +406,14 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
 
           {/* Button */}
-          <div className=" sm:mt-10 px-8 pt-20 mb-10">
+          <div className=" sm:mt-10 px-8 pt-16 mb-10">
             <button
-              onClick={toSuccess}
+              // onClick={toSuccess}
+              onClick={verifyCodeAndProceed}
               className=" text-white w-full bg-[#E76F51] rounded-full p-[10px] text-base font-normal"
             >
               Join Group

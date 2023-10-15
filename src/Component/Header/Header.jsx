@@ -22,6 +22,7 @@ const Header = () => {
     setJoinGroupBtn(false);
     setJoinLearnerBtn(false);
     setSuccess(false);
+    // localStorage.clear()
   };
 
   // CONFIRM EMAIL MODEL
@@ -59,8 +60,8 @@ const Header = () => {
   return (
     <>
       {/*flex justify-center items-center   items-center md:justify-between py-5 text-sm md:text-lg */}
-      <div className="relative flex flex-row items-center justify-between py-5 xl:px-10 sm:px-4 text-sm md:text-lg">
-        <div className="flex flex-row items-center gap-5 ">
+      <div className="relative flex md:flex-row items-center md:justify-between py-5 xl:px-10 sm:px-4 text-sm md:text-lg">
+        <div className="flex flex-row items-center gap-14">
           {!showMenu && (
             <>
               <Logo Text={"CLUSTER"} />
@@ -74,17 +75,16 @@ const Header = () => {
           )}
 
           {/* Hamburger Icon */}
-          <div className="-mt-5 md:hidden cursor-pointer block text-4xl">
-            <button
-              onClick={() => setShowMenu(!showMenu)}
-              className=" text- text-3xl hover:text-gray-200 duration-400 focus:outline-none "
-            >
+          <div className=" -mt-5 md:hidden cursor-pointer block text-4xl sm:mt-0">
+            <div onClick={() => {console.log(showMenu);setShowMenu((prev) => !prev);}} className=" text-3xl hover:text-gray-200 duration-400 focus:outline-none ">
               {!showMenu ? (
-                <HamburgerNav />
+                <div>
+                  <HamburgerNav />
+                </div>
               ) : (
-                <div className="w-80 float-right">
+                <div className=" relative  w-[364px]">
                   <svg
-                    className=" mt-2 float-right "
+                    className=" absolute right-10 top-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
@@ -113,7 +113,7 @@ const Header = () => {
                   </svg>
                 </div>
               )}
-            </button>
+            </div>
           </div>
         </div>
         {/* Desktop Navigation */}
@@ -131,9 +131,9 @@ const Header = () => {
         <section>
           <button
             onClick={toggleModal}
-            className=" w-20 hidden md:flex items-center justify-center rounded-lg"
+            className="hover:bg-[#E76F51] border border-black hover:border-[#E76F51] hover:text-white ease-in-out duration-300 w-20 hidden md:flex items-center justify-center rounded-lg"
             style={{
-              border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
+              // border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
             }}
           >
             Join

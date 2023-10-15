@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
+const Success = ({ toggleModal }) => {
   const [getEmail, setGetEmail] = useState(false);
   const [email, setEEmail] = useState("");
-  // const [modal, setModal] = useState(false);
-
-  // const toggleModal = () => {
-  //   setModal(!modal);
-  // };
 
   const interval = setInterval(() => {
     const email = localStorage.getItem("email");
@@ -23,22 +18,20 @@ const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
   }, [5000]);
 
   const redirectToEmail = () => {
-    const atPos = email.indexOf("@")
+    const atPos = email.indexOf("@");
     const hoester = email.substring(atPos + 1);
-    return `https://www.${hoester}`
+    return `https://www.${hoester}`;
   };
   const handleRedirect = () => {
     const emailLink = redirectToEmail();
 
-    window.open(emailLink, "_blank")
-  }
-
+    window.open(emailLink, "_blank");
+  };
 
   return (
-    // fixed z-10 inset-0 overscroll-none bg-black bg-opacity-50
-    <div className="">
+    <div>
       <div className="h-screen flex justify-center items-center">
-        <div className="relative modal-content font-ver sm:w-[342px] lg:w-[602px] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  lg:px-12 sm:px-8 lg:py-12">
+        <div className="relative modal-content font-ver sm:w-[342px] md:w-[602px] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  px-12 py-12">
           <span
             className="cursor-pointer absolute top-7 right-6"
             onClick={toggleModal}
@@ -64,26 +57,29 @@ const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
               />
             </svg>
           </span>
-          <h1 className="text-white text-center sm:pt-20 md:mt-20 md:text-4xl sm:text-[20px] font-normal :w-[245px]">
-            Verification code <br /> sent!
-          </h1>
-          <div className="md:flex flex-row justify-evenly items-center md:mt-20 sm:mt-10 sm:mb-5 md:mb-0">
-            <button
-              onClick={toJoinLearner}
-              type="button"
-              className="lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-borderEmail lg:text-xl font-normal bg-transparent border-2 rounded-[30px] border-borderEmail"
-            >
-              Join Group
-            </button>
 
-            
+          <div className=" text-white">
+            <div className=" justify-center flex md:mt-10 sm:mt-5  ">
+              <h1 className=" w-[309px] leading-[44px] font-ver font-normal text-center lg:text-[36px] sm:text-[25px]">
+                Successful
+              </h1>
+            </div>
+            <div className=" mt-5 flex text-center justify-center">
+              <p className=" md:w-[457px] sm:w-[243px] md:text-[20px] sm:text-[14px] font-normal font-ver">
+                You have been added to a group, check your email for the invite.
+              </p>
+            </div>
+
+            <div className=" flex justify-center lg:mt-10 sm:mt-10">
               <button
                 onClick={handleRedirect}
-                className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent"
+                className=" bg-white md:w-[185px] sm:w-[282px] md:h-[50px] sm:h-[40px] p-[10px] md:rounded-[30px] sm:rounded-[45px] "
               >
-                Go to mail
+                <span className="w-[117px] leading-[24px] font-ver font-normal text-[20px] text-[#E76F51]">
+                  Go to Email
+                </span>
               </button>
-            
+            </div>
           </div>
         </div>
       </div>
@@ -91,4 +87,4 @@ const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
   );
 };
 
-export default ConfirmEmail;
+export default Success;
