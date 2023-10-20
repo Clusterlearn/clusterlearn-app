@@ -30,7 +30,7 @@ const Header = () => {
     setJoinGroupBtn(!joinGroupBtn); //true
     setModal(!showModal); //false
   };
-  
+
   const closeToConfirmEmail = () => {
     setJoinGroupBtn(false);
   };
@@ -132,9 +132,7 @@ const Header = () => {
           <button
             onClick={toggleModal}
             className="hover:bg-[#E76F51] border border-black hover:border-[#E76F51] hover:text-white ease-in-out duration-300 w-20 hidden md:flex items-center justify-center rounded-lg"
-            style={{
-              // border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
-            }}
+         
           >
             Join
           </button>

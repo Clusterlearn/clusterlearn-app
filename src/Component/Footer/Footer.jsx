@@ -15,7 +15,7 @@ function Footer() {
               Get better at learning.
             </h1>
             <nav className="">
-              <ul className="lg:grid md:grid lg:grid-cols-2 md:grid-cols-2 uppercase xl:gap-12 md:gap-14 xl:text-xl md:text-sm font-ver font-normal text-darkblue cursor-pointer">
+              <ul className="lg:grid md:grid lg:grid-cols-2 md:grid-cols-2 uppercase xl:gap-12 md:gap-14 xl:text-xl md:text-sm font-ver font-normal text-darkblue sm:items-center sm:justify-center cursor-pointer">
                 <li className=" sm:mt-12">About Us</li>
                 <li className=" sm:mt-12">Contact</li>
                 <li className=" sm:mt-12">Testimonial</li>

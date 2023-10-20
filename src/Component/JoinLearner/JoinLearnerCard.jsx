@@ -73,15 +73,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
     }
 
   };
-  //   if (response.status === 200){
-  //     console.log("For submitted succefully :)");
-  //     toSuccess(true)
-  //   } else {
-  //     console.log("Could not submit form :(");
-  //   }
-  // } catch (err){
-  //   console.log("Error:", err);
-  // }
+  
 
   return (
     <div className="">
