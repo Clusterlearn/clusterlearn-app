@@ -19,6 +19,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
   const [monitor, setMonitor] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(()=> {
     localStorage.setItem("email", email)
@@ -53,6 +54,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                   email: "",
                 }}
                 onSubmit={async (values) => {
+                  setSubmitting(true)
                   // same shape as initial values
                   setEEmail(values.email)
                   setMonitor(true)
@@ -66,11 +68,14 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                     if (response.status === 200) {
                       console.log("Form submitted successfully.");
                       toConfirmEmail(true);
+                      setSubmitting(false)
                     } else {
                       console.error("Form submission failed.");
+                      setSubmitting(false)
                     }
                   } catch (error) {
                     console.error("Error:", error);
+                    setSubmitting(false)
                   }
                 }}
               >
@@ -128,10 +133,13 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                       </div>
                       <div className="lg:pt-20 sm:pt-2 lg:mb-10">
                         <button
+                        disabled={submitting}
                           type="submit"
                           className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
                         >
-                          Join Group
+                          {
+                            submitting ? (<span>Joining...</span>) : (<span>Join Group</span>)
+                          }
                         </button>
                       </div>
                     </div>
