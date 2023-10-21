@@ -15,7 +15,7 @@ function validateEmail(value) {
   return error;
 }
 
-const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
+const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
   const [monitor, setMonitor] = useState(false)
@@ -58,7 +58,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                   // same shape as initial values
                   setEEmail(values.email)
                   setMonitor(true)
-                  console.log(values);
+                  console.log("from JoinGroup: ",values);
                   try {
                     const response = await axios.post(
                       "https://clusterlearn.cyclic.app/user/getverify",
@@ -109,7 +109,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                           <p>Remember me </p>
                           <label
                             htmlFor="check"
-                            className={`relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
+                            className={` relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
                           >
                             <Field
                               type="checkbox"
@@ -117,7 +117,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                               name="checked"
                               value="rememberChecked"
                               className="peer sr-only"
-                              onClick={() => setIsChecked(!isChecked)}
+                              onClick={() => {setIsChecked(!isChecked); monitorIsChecked()}}
                             />
                             <span
                               className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full px-1

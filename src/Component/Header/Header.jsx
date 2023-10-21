@@ -10,79 +10,49 @@ import Success from "../Success/Success";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [showModal, setModal] = useState(false);
-  const [joinGroupBtn, setJoinGroupBtn] = useState(false);
-  const [joinLearnerBtn, setJoinLearnerBtn] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-
-  // JOIN GROUP MODAL
-  const toggleModal = () => {
-    setModal(!showModal);
-    setJoinGroupBtn(false);
-    setJoinLearnerBtn(false);
-    setSuccess(false);
-    // localStorage.clear()
-  };
-
-  // CONFIRM EMAIL MODEL
-  const toConfirmEmail = () => {
-    setJoinGroupBtn(!joinGroupBtn); //true
-    setModal(!showModal); //false
-  };
   
-  const closeToConfirmEmail = () => {
-    setJoinGroupBtn(false);
-  };
 
-  // JOIN LEARNER MODEL
-  const toJoinLearner = () => {
-    setJoinLearnerBtn(!joinLearnerBtn); //true
-    // setJoinLearnerBtn(!joinLearnerBtn);
-    setJoinGroupBtn(!joinGroupBtn); //fase
-    // setModal(!showModal)
-  };
-  const closeToJoinLearner = () => {
-    setJoinLearnerBtn(false);
-  };
+ 
 
-  // SUCCESS MODAL
-  const toSuccess = () => {
-    setJoinLearnerBtn(!joinLearnerBtn); // false
-    // setJoinGroupBtn(!joinGroupBtn)
-    setSuccess(!success);
-    // setModal(false)
-  };
-  const closeSuccess = () => {
-    setSuccess(false);
-  };
+  
+
+  
+
+  
+  
 
   return (
     <>
       {/*flex justify-center items-center   items-center md:justify-between py-5 text-sm md:text-lg */}
       <div className="relative flex md:flex-row items-center md:justify-between py-5 xl:px-10 sm:px-4 text-sm md:text-lg">
-        <div className="flex flex-row items-center gap-14">
+        <div className="flex justify-around flex-row items-center gap-14">
           {!showMenu && (
             <>
               <Logo Text={"CLUSTER"} />
-              <button
+              {/* <button
                 className=" w-[62px] h-[29px] p-[6px]  border rounded-[25px] border-custom-color xl:hidden lg:hidden md:hidden "
-                onClick={toggleModal}
+                // onClick={toggleModal}
               >
                 Join
-              </button>
+              </button> */}
             </>
           )}
 
           {/* Hamburger Icon */}
-          <div className=" -mt-5 md:hidden cursor-pointer block text-4xl sm:mt-0">
-            <div onClick={() => {console.log(showMenu);setShowMenu((prev) => !prev);}} className=" text-3xl hover:text-gray-200 duration-400 focus:outline-none ">
+          <div className=" -mt-5 md:hidden cursor-pointer block text-4xl sm:mt-0 ml-[90px]">
+            <div
+              onClick={() => {
+                console.log(showMenu);
+                setShowMenu((prev) => !prev);
+              }}
+              className=" text-3xl hover:text-gray-200 duration-400 focus:outline-none "
+            >
               {!showMenu ? (
                 <div>
                   <HamburgerNav />
                 </div>
               ) : (
-                <div className=" relative  w-[364px]">
+                <div className=" bg-red-500 relative  w-[300px] -mt-4">
                   <svg
                     className=" absolute right-10 top-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -129,15 +99,17 @@ const Header = () => {
           </li>
         </ul>
         <section>
-          <button
+          {/* <button
             onClick={toggleModal}
             className="hover:bg-[#E76F51] border border-black hover:border-[#E76F51] hover:text-white ease-in-out duration-300 w-20 hidden md:flex items-center justify-center rounded-lg"
-            style={{
-              // border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
-            }}
+            style={
+              {
+                // border: "1px solid var(--black-inactive, rgba(15, 23, 42, 0.50))",
+              }
+            }
           >
             Join
-          </button>
+          </button> */}
         </section>
       </div>
       {/* </nav> */}
@@ -145,44 +117,12 @@ const Header = () => {
       {/* TOGGLE OF ALL THE MODAL CARDS */}
       {/* TOGGLE OF ALL THE MODAL CARDS */}
       <div className="">
-        {/* card 1 */}
-        <div className={` ${showModal ? "block" : "hidden"}`}>
-          <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <JoinGroup
-              toConfirmEmail={toConfirmEmail}
-              toggleModal={toggleModal}
-            />
-          </div>
-        </div>
-        {/* card 2 */}
-        <div className={`${joinGroupBtn ? "block" : "hidden"}`}>
-          <div className="  bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <ConfirmEmail
-              toJoinLearner={toJoinLearner}
-              toggleModal={closeToConfirmEmail}
-            />
-          </div>
-        </div>
-        {/* card 3 */}
-        <div className={`${joinLearnerBtn ? "block" : "hidden"}`}>
-          <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <JoinLearnerCard
-              toSuccess={toSuccess}
-              toggleModal={closeToJoinLearner}
-            />
-          </div>
-        </div>
-        {/* card 4 */}
-        <div className={`${success ? "block" : "hidden"}`}>
-          <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <Success toggleModal={closeSuccess} />
-          </div>
-        </div>
+        
 
         {/* Mobile Menu */}
         {showMenu && (
-          <div className=" flex w-full h-screen">
-            <div className=" w-full md:hidden flex flex-col pt-20 ">
+          <div className=" flex h-screen">
+            <div className="  w-full md:hidden flex flex-col pt-20 ">
               <ul className=" flex flex-col gap-5 flex-wrap justify-between items-center font-ver text-base font-normal text-darkblue">
                 <li className=" pt-20 text-[20px] font-normal font-ver">
                   <a href="#about">About Us</a>
@@ -196,7 +136,7 @@ const Header = () => {
               </ul>
               <div className=" flex justify-center  mt-5 pt-20">
                 <div className=" text-[20px] font-normal font-ver">
-                  <button
+                  {/* <button
                     onClick={toggleModal}
                     className=" w-20 flex items-center justify-center rounded-lg"
                     style={{
@@ -205,7 +145,7 @@ const Header = () => {
                     }}
                   >
                     Join
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
