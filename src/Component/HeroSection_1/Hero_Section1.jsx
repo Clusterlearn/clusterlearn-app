@@ -1,8 +1,82 @@
 import React from "react";
+import toast from "react-hot-toast";
 import heroimage from "../../../src/asset/heroimage.png";
 import "./Hero_Section1.css";
+import JoinGroup from "../JoinGroup/JoinGroup";
+import ConfirmEmail from "../EmailVerification/ConfirmEmail";
+import JoinLearnerCard from "../JoinLearner/JoinLearnerCard";
+import Success from "../Success/Success";
+import { useState } from "react";
 
 function Hero_Section1() {
+  const [showModal, setModal] = useState(false);
+  const [joinGroupBtn, setJoinGroupBtn] = useState(false);
+  const [joinLearnerBtn, setJoinLearnerBtn] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [url, setUrl] = useState("");
+  const [isChecked, setIsChecked] = useState(true);
+  const [rememberToken, setRememberToken] = useState("");
+  const [resData, setResData] = useState();
+
+  // JOIN GROUP MODAL
+  const toggleModal = () => {
+    if (!url) {
+      return toast.error("URL connot be empty!");
+    }
+    localStorage.setItem("url", url);
+    // console.log(url);
+
+    setModal(!showModal);
+    setJoinGroupBtn(false);
+    setJoinLearnerBtn(false);
+    setSuccess(false);
+    // localStorage.clear()
+  };
+
+  // CONFIRM EMAIL MODEL
+  const toConfirmEmail = () => {
+    setJoinGroupBtn(!joinGroupBtn); //true
+    setModal(!showModal); //false
+  };
+
+  const closeToConfirmEmail = () => {
+    setJoinGroupBtn(false);
+  };
+
+  // JOIN LEARNER MODEL
+  const toJoinLearner = () => {
+    setJoinLearnerBtn(!joinLearnerBtn); //true
+    // setJoinLearnerBtn(!joinLearnerBtn);
+    setJoinGroupBtn(!joinGroupBtn); //fase
+    // setModal(!showModal)
+  };
+
+  const closeToJoinLearner = () => {
+    setJoinLearnerBtn(false);
+  };
+
+  // SUCCESS MODAL
+  const toSuccess = () => {
+    setJoinLearnerBtn(!joinLearnerBtn); // false
+    // setJoinGroupBtn(!joinGroupBtn)
+    setSuccess(!success);
+    // setModal(false)
+  };
+  const closeSuccess = () => {
+    setSuccess(false);
+  };
+
+  const monitorIsChecked = () => {
+    setIsChecked(!isChecked);
+    // console.log("From hero_section: ", isChecked);
+  };
+
+  const toSetToken = () => {};
+
+  if (resData !== undefined) {
+    console.log("From Hero_Section1 RESDATA: ", resData);
+  }
+
   return (
     <>
       <section
@@ -29,28 +103,68 @@ function Hero_Section1() {
             Connect with other learners, ask questions, share tips, get
             motivated and get matched with mentors.
           </p>
-          <form
-            action=""
-            method="post"
-            className="flex flex-col gap-3 mt-6 md:mt-10 xl:relative"
-          >
+          <div className="flex flex-col gap-3 mt-6 md:mt-10 xl:relative">
             <input
               type="text"
               name=""
               id=""
+              onChange={(e) => {
+                setUrl(e.target.value);
+              }}
               placeholder="Paste the URL of the online course"
               className="px-4 py-3 rounded-full text-logo-left outline  focus:px-6 placeholder:px-5 placeholder:text-lg placeholder:italic placeholder:text-slate-400 border-2 xl:p-5 xl:relative"
             />
             <button
-              type="submit"
+              onClick={toggleModal}
               className="pointer px-4 py-3 rounded-full bg-[#E76F51] text-white xl:absolute xl:inset-y-0 right-0 xl:m-2 xl:px-8 "
             >
               JOIN
             </button>
-          </form>
+          </div>
         </div>
         <img src={heroimage} alt="" className="rounded-full mx-auto xl:w-2/3" />
       </section>
+
+      {/* TOGGLE OF ALL THE MODEAL */}
+      <div className="">
+        {/* card 1 */}
+        <div className={` ${showModal ? "block" : "hidden"}`}>
+          <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+            <JoinGroup
+              toConfirmEmail={toConfirmEmail}
+              toggleModal={toggleModal}
+              monitorIsChecked={monitorIsChecked}
+            />
+          </div>
+        </div>
+        {/* card 2 */}
+        <div className={`${joinGroupBtn ? "block" : "hidden"}`}>
+          <div className="  bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+            <ConfirmEmail
+              toJoinLearner={toJoinLearner}
+              toggleModal={closeToConfirmEmail}
+            />
+          </div>
+        </div>
+        {/* card 3 */}
+        <div className={`${joinLearnerBtn ? "block" : "hidden"}`}>
+          <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+            <JoinLearnerCard
+              toSuccess={toSuccess}
+              toggleModal={closeToJoinLearner}
+              isChecked={isChecked}
+              toSetToken={toSetToken}
+              setResData={setResData}
+            />
+          </div>
+        </div>
+        {/* card 4 */}
+        <div className={`${success ? "block" : "hidden"}`}>
+          <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
+            <Success toggleModal={closeSuccess} />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
