@@ -4,7 +4,7 @@ import { IoMdRadioButtonOn } from "react-icons/io";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
+const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
   const [showSelectStage, setShowSelectStage] = useState(false);
   const [selectedStage, setSelectedStage] = useState(null);
   const [showSelectedSession, setShowSelectedSession] = useState(false);
@@ -15,10 +15,11 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
   const [email, setEEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [err, setErr] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const interval = setInterval(() => {
     const email = localStorage.getItem("email");
-    console.log("in this page", email);
+    // console.log("in this page", email);
     setEEmail(email);
     if (getEmail !== "") {
       setGetEmail(true);
@@ -31,6 +32,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
 
   // function to verify if the code sent === the code inputed
   const verifyCodeAndProceed = async () => {
+    setSubmitting(true);
     if (!verificationCode) {
       console.log("Rubbish code");
       setErr(true);
@@ -44,34 +46,74 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
     };
 
     try {
+      const response = await axios.post(
+        "https://clusterlearn.cyclic.app/user/verify",
+        data
+      );
 
-      const response = await axios.post('https://clusterlearn.cyclic.app/user/verify', data)
+      const message = response?.data?.data?.message;
+      const deviceToken = response?.data?.data?.deviceToken;
+      console.log("message:", message);
+      console.log("deviceToken:", deviceToken);
 
-      const message = response?.data?.data?.message
-      const deviceToken = response?.data?.data?.deviceToken
+      if (isChecked === true) {
+        localStorage.setItem("deviceToken", deviceToken);
+      }
 
-      localStorage.setItem("deviceToken", deviceToken)
+      toast.success(message);
 
-      toast.success(message)
+      // function to run before proceeding to Success modal
+      try {
+        const devToken = localStorage.getItem("deviceToken");
+        const devEmail = localStorage.getItem("email");
+        const devUrl = localStorage.getItem("url");
 
-      toSuccess()
+        const dataTosend = {
+          email: devEmail,
+          url: devUrl,
+          rememberToken: devToken,
+        };
 
+        const res = await axios.post(
+          "https://clusterlearn.cyclic.app/user/register",
+          dataTosend
+        );
+        const responseFromBackend = res?.data?.data;
+
+        setResData(responseFromBackend);
+
+        console.log("JoinLearnerCard :", responseFromBackend);
+      } catch (error) {
+        const message =
+          error.response.data.data.error ||
+          error.response.data.data.status ||
+          (error.response &&
+            error.response.data &&
+            error.response.data.data.message) ||
+          error.message ||
+          error.toString();
+
+        toast.error(message);
+        console.log(message);
+      }
+
+      // toSuccess();
+      setSubmitting(false);
     } catch (error) {
-
-
       const message =
-        error.response.data.data.error || error.response.data.data.status ||
+        error.response.data.data.error ||
+        error.response.data.data.status ||
         (error.response &&
           error.response.data &&
           error.response.data.data.message) ||
         error.message ||
         error.toString();
 
-      toast.error(message)
+      toast.error(message);
       console.log(message);
 
+      setSubmitting(false);
     }
-
   };
   
 
@@ -161,7 +203,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
             </div>
             {err && (
               <div className=" ml-2 text-red-500">
-                Verification can't be empty
+                Verification can't be empty!
               </div>
             )}
           </div>
@@ -405,10 +447,11 @@ const JoinLearnerCard = ({ toSuccess, toggleModal }) => {
           <div className=" sm:mt-10 px-8 pt-16 mb-10">
             <button
               // onClick={toSuccess}
+              disabled={submitting}
               onClick={verifyCodeAndProceed}
               className=" text-white w-full bg-[#E76F51] rounded-full p-[10px] text-base font-normal"
             >
-              Join Group
+              {submitting ? <span>Joining...</span> : <span>Join Group</span>}
             </button>
           </div>
         </div>

@@ -15,7 +15,7 @@ function Card() {
         <div className="">
           <div
             id="about"
-            className="flex xl:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center xl:gap-10 md:gap-5 w-full h-full  mt-40
+            className=" flex xl:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center xl:gap-10 md:gap-5 w-full h-full  mt-40
             "
           >
             <div className="xl:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
@@ -44,7 +44,7 @@ function Card() {
           <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
           {/* second card */}
-          <div className="flex xl:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+          <div className=" flex lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
             <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame digit={"02"} color={"#2A9D8F"} />
               <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
@@ -71,7 +71,7 @@ function Card() {
           <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
           {/* Third card */}
-          <div className="flex xl:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+          <div className=" flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
             <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame digit={"03"} color={"#E9C46A"} />
               <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
@@ -97,7 +97,7 @@ function Card() {
           <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
           {/* fourth card */}
-          <div className="flex xl:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
+          <div className=" flex lg:flex-row md:flex-row sm:flex-col-reverse flex-nowrap justify-between items-center gap-10 w-full h-full  mt-40">
             <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame digit={"04"} color={"#0F172A"} />
               <div className="sm:text-start md:text-start font-ver lg:-mt-8 md:mt-5 sm:mt-0 md:ml-5 sm:ml-0">
@@ -125,7 +125,7 @@ function Card() {
           <div className=" w-full bg-gray-300 h-[2px] mt-32 lg:hidden md:hidden"></div>
 
           {/* fifth card */}
-          <div className="flex xl:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  my-40">
+          <div className=" flex lg:flex-row md:flex-row sm:flex-col flex-nowrap justify-between items-center gap-10 w-full h-full  my-40">
             <div className="lg:flex md:flex md:w-1/2 h-[340px] sm:mt-10">
               <Frame
                 digit={"05"}

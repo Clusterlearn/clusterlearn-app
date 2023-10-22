@@ -15,10 +15,11 @@ function validateEmail(value) {
   return error;
 }
 
-const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
+const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
   const [monitor, setMonitor] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(()=> {
     localStorage.setItem("email", email)
@@ -53,10 +54,11 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                   email: "",
                 }}
                 onSubmit={async (values) => {
+                  setSubmitting(true)
                   // same shape as initial values
                   setEEmail(values.email)
                   setMonitor(true)
-                  console.log(values);
+                  console.log("from JoinGroup: ",values);
                   try {
                     const response = await axios.post(
                       "https://clusterlearn.cyclic.app/user/getverify",
@@ -66,11 +68,14 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                     if (response.status === 200) {
                       console.log("Form submitted successfully.");
                       toConfirmEmail(true);
+                      setSubmitting(false)
                     } else {
                       console.error("Form submission failed.");
+                      setSubmitting(false)
                     }
                   } catch (error) {
                     console.error("Error:", error);
+                    setSubmitting(false)
                   }
                 }}
               >
@@ -104,7 +109,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                           <p>Remember me </p>
                           <label
                             htmlFor="check"
-                            className={`relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
+                            className={` relative cursor-pointer bg-white w-6 h-[14px] border-2 ${dynamicBorderStyle} rounded-full`}
                           >
                             <Field
                               type="checkbox"
@@ -112,7 +117,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                               name="checked"
                               value="rememberChecked"
                               className="peer sr-only"
-                              onClick={() => setIsChecked(!isChecked)}
+                              onClick={() => {setIsChecked(!isChecked); monitorIsChecked()}}
                             />
                             <span
                               className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full px-1
@@ -128,10 +133,13 @@ const JoinGroup = ({ toConfirmEmail, toggleModal }) => {
                       </div>
                       <div className="lg:pt-20 sm:pt-2 lg:mb-10">
                         <button
+                        disabled={submitting}
                           type="submit"
                           className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
                         >
-                          Join Group
+                          {
+                            submitting ? (<span>Joining...</span>) : (<span>Join Group</span>)
+                          }
                         </button>
                       </div>
                     </div>
