@@ -115,7 +115,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
       setSubmitting(false);
     }
   };
-  
+
 
   return (
     <div className="">
