@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CloseCircle } from "../../../src/asset/CloseCircle.svg";
 import { ReactComponent as EmailIcon } from "../../../src/asset/EmailIcon.svg";
 
+
 function validateEmail(value) {
   let error;
   if (!value) {
@@ -15,18 +16,11 @@ function validateEmail(value) {
   return error;
 }
 
-const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
+const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearnerBtn, toJoinLearner, monitorIsChecked, toSuccess }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
-  const [monitor, setMonitor] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
+  const [submitting, setSubmitting] = useState(false);
 
-  useEffect(()=> {
-    localStorage.setItem("email", email)
-  }, [monitor])
-
-  // console.log("check email", email);
- 
   const dynamicBorderStyle = isChecked
     ? "border-[#E76F51]"
     : "border-[#0F172A]";
@@ -54,11 +48,10 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                   email: "",
                 }}
                 onSubmit={async (values) => {
-                  setSubmitting(true)
+                  setSubmitting(true);
                   // same shape as initial values
-                  setEEmail(values.email)
-                  setMonitor(true)
-                  console.log("from JoinGroup: ",values);
+                  setEEmail(values.email);
+                  //console.log("from JoinGroup: ", values);
                   try {
                     const response = await axios.post(
                       "https://clusterlearn.cyclic.app/user/getverify",
@@ -66,16 +59,23 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                     );
 
                     if (response.status === 200) {
+                      if (localStorage.getItem("email") === values.email) {
+                        toSuccess(true);
+                        setJoinLearnerBtn(false);
+                      } else {
+                        localStorage.setItem("email", values.email)
+                        toConfirmEmail(true);
+
+                      }
                       console.log("Form submitted successfully.");
-                      toConfirmEmail(true);
-                      setSubmitting(false)
+                      setSubmitting(false);
                     } else {
                       console.error("Form submission failed.");
-                      setSubmitting(false)
+                      setSubmitting(false);
                     }
                   } catch (error) {
                     console.error("Error:", error);
-                    setSubmitting(false)
+                    setSubmitting(false);
                   }
                 }}
               >
@@ -95,7 +95,9 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                           autoComplete="disable"
                           placeholder="Enter email address"
                           validate={validateEmail}
-                          onClick={(e)=>{setEEmail(e.target.value)}}
+                          onClick={(e) => {
+                            setEEmail(e.target.value);
+                          }}
                         />
                       </div>
                       <div className="text-red-600 mt-2 text-sm">
@@ -117,7 +119,10 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                               name="checked"
                               value="rememberChecked"
                               className="peer sr-only"
-                              onClick={() => {setIsChecked(!isChecked); monitorIsChecked()}}
+                              onClick={() => {
+                                setIsChecked(!isChecked);
+                                monitorIsChecked();
+                              }}
                             />
                             <span
                               className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full px-1
@@ -133,13 +138,15 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                       </div>
                       <div className="lg:pt-20 sm:pt-2 lg:mb-10">
                         <button
-                        disabled={submitting}
+                          disabled={submitting}
                           type="submit"
                           className="bg-[#E76F51] p-[12px] text-white text-center font-ver font-normal text-base w-full rounded-[30px] sm:mb-5"
                         >
-                          {
-                            submitting ? (<span>Joining...</span>) : (<span>Join Group</span>)
-                          }
+                          {submitting ? (
+                            <span>Joining...</span>
+                          ) : (
+                            <span>Join Group</span>
+                          )}
                         </button>
                       </div>
                     </div>

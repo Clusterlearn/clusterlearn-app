@@ -62,6 +62,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
       toast.success(message);
 
+
       // function to run before proceeding to Success modal
       try {
         const devToken = localStorage.getItem("deviceToken");
@@ -74,9 +75,16 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
           rememberToken: devToken,
         };
 
+         const headers = {
+           "Access-Control-Allow-Origin": "*",
+           Accept: "application/json",
+           "Content-Type": "application/json",
+         };
+
         const res = await axios.post(
+          // "https://clusterlearn.onrender.com",
           "https://clusterlearn.cyclic.app/user/register",
-          dataTosend
+          dataTosend, { headers }
         );
         const responseFromBackend = res?.data?.data;
 
@@ -97,20 +105,19 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
         console.log(message);
       }
 
-      // toSuccess();
+      toSuccess();
       setSubmitting(false);
     } catch (error) {
       const message =
-        error.response.data.data.error ||
-        error.response.data.data.status ||
-        (error.response &&
-          error.response.data &&
-          error.response.data.data.message) ||
-        error.message ||
-        error.toString();
+        error?.response?.data?.data?.message ||
+        error?.response?.data?.data?.status ||
+        (error?.response &&
+          error?.response?.data &&
+          error?.response?.data?.data?.message) ||
+        error?.message ||
+        error?.toString();
 
       toast.error(message);
-      console.log(message);
 
       setSubmitting(false);
     }
