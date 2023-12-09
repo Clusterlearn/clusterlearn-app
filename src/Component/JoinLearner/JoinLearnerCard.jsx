@@ -58,6 +58,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
       if (isChecked === true) {
         localStorage.setItem("deviceToken", deviceToken);
+        localStorage.setItem("deviceTokenEmail", email)
       }
 
       toast.success(message);
@@ -72,18 +73,16 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
         const dataTosend = {
           email: devEmail,
           url: devUrl,
-          rememberToken: devToken,
+          rememberToken: devEmail == localStorage.getItem("deviceTokenEmail") ? devToken : null
         };
 
          const headers = {
-           "Access-Control-Allow-Origin": "*",
-           Accept: "application/json",
-           "Content-Type": "application/json",
-         };
+          'Content-Type': 'application/json'
+        };
 
         const res = await axios.post(
-          // "https://clusterlearn.onrender.com",
-          "https://clusterlearn.cyclic.app/user/register",
+          // "https://clusterlearn-api.onrender.com/",
+          "https://clusterlearn-api.onrender.com/user/register",
           dataTosend, { headers }
         );
         const responseFromBackend = res?.data?.data;
