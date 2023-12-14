@@ -4,6 +4,59 @@ import { IoMdRadioButtonOn } from "react-icons/io";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+
+// function to run before proceeding to Success modal
+async function getInformations (devToken, setResData){
+  console.log(devToken);
+try {
+  // const devToken = localStorage.getItem("deviceToken");
+  const devEmail = localStorage.getItem("email");
+  const devUrl = localStorage.getItem("url");
+  console.log(devToken);
+
+  const dataTosend = {
+    email: devEmail,
+    url: devUrl,
+    rememberToken: devToken,
+  };
+  console.log("Data to send", dataTosend);
+
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+
+  console.log("Before second axios request");
+  const res = await axios.post(
+    // "https://clusterlearn.cyclic.app/user/register",
+    "https://clusterlearn-api.onrender.com/user/register",
+    dataTosend,
+    { headers: headers }
+  );
+  console.log("After second axios");
+  const responseFromBackend = res?.data?.data;
+
+  console.log("res from second axios ");
+
+  setResData(responseFromBackend);
+
+  console.log("JoinLearnerCard :", responseFromBackend);
+} catch (error) {
+  const message =
+    error.response.data.data.error ||
+    error.response.data.data.status ||
+    (error.response &&
+      error.response.data &&
+      error.response.data.data.message) ||
+    error.message ||
+    error.toString();
+
+  toast.error(message);
+  console.log(message);
+}
+}
+
 const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
   const [showSelectStage, setShowSelectStage] = useState(false);
   const [selectedStage, setSelectedStage] = useState(null);
@@ -15,11 +68,15 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
   const [email, setEEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [err, setErr] = useState(false);
+  const [rememberMe, setRememberMe] = useState();
+  const [devToken, setDevToken] = useState("")
   const [submitting, setSubmitting] = useState(false);
 
   const interval = setInterval(() => {
     const email = localStorage.getItem("email");
+    const remember = localStorage.getItem("isChecked");
     // console.log("in this page", email);
+    setRememberMe(remember);
     setEEmail(email);
     if (getEmail !== "") {
       setGetEmail(true);
@@ -30,11 +87,19 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
     }
   }, [5000]);
 
+
+  useEffect(() => {
+    if (devToken) {
+      getInformations(devToken, setResData);
+    }
+  }, [devToken, setResData]);
+
   // function to verify if the code sent === the code inputed
   const verifyCodeAndProceed = async () => {
+
     setSubmitting(true);
     if (!verificationCode) {
-      console.log("Rubbish code");
+      // console.log("Rubbish code");
       setErr(true);
       return;
     }
@@ -42,62 +107,35 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
     const data = {
       email,
       code: verificationCode,
-      rememberMe: true,
+      rememberMe: rememberMe
+    };
+
+    console.log("data from JOINLEARNERCARD", data);
+    const headers = {
+      "Access-Control-Allow-Origin": "*",
+      Accept: "application/json",
+      "Content-Type": "application/json",
     };
 
     try {
       const response = await axios.post(
-        "https://clusterlearn.cyclic.app/user/verify",
-        data
+        // "https://clusterlearn.cyclic.app/user/verify",
+        "https://clusterlearn-api.onrender.com/user/verify",
+        data,
+        { headers: headers }
       );
 
       const message = response?.data?.data?.message;
       const deviceToken = response?.data?.data?.deviceToken;
-      console.log("message:", message);
-      console.log("deviceToken:", deviceToken);
 
-      if (isChecked === true) {
-        localStorage.setItem("deviceToken", deviceToken);
-      }
+    
+      // setDevToken stores the token sent from the backend 
+      setDevToken(deviceToken)
+      console.log("deviceToken:", deviceToken);
 
       toast.success(message);
 
-      // function to run before proceeding to Success modal
-      try {
-        const devToken = localStorage.getItem("deviceToken");
-        const devEmail = localStorage.getItem("email");
-        const devUrl = localStorage.getItem("url");
-
-        const dataTosend = {
-          email: devEmail,
-          url: devUrl,
-          rememberToken: devToken,
-        };
-
-        const res = await axios.post(
-          "https://clusterlearn.cyclic.app/user/register",
-          dataTosend
-        );
-        const responseFromBackend = res?.data?.data;
-
-        setResData(responseFromBackend);
-
-        console.log("JoinLearnerCard :", responseFromBackend);
-      } catch (error) {
-        const message =
-          error.response.data.data.error ||
-          error.response.data.data.status ||
-          (error.response &&
-            error.response.data &&
-            error.response.data.data.message) ||
-          error.message ||
-          error.toString();
-
-        toast.error(message);
-        console.log(message);
-      }
-
-      // toSuccess();
+      // toSuccess(); NOTE: I STILL NEED TO WORK ON THIS PART OF THE CODE 
       setSubmitting(false);
     } catch (error) {
       const message =
@@ -114,8 +152,9 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
       setSubmitting(false);
     }
+
+    
   };
-  
 
   return (
     <div className="">
@@ -462,4 +501,4 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
 export default JoinLearnerCard;
 
-//  text-[#0F172A80] z-30 absolute mt-2 bg-white border rounded-lg shadow-md
+
