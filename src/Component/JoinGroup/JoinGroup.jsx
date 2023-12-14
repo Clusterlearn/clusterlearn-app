@@ -28,10 +28,11 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
     const ret = JSON.parse(localStorage.getItem("isChecked"))
     console.log(ret);
     if(ret === true){
-      // MOVE THE MAIN CODE HERE 
-    }else{
-      // IF THERE IS AN "isChecked" SSET IN THE LOCAL STORAGE 
+      // IF THERE ISN'T AN "isChecked" SSET IN THE LOCAL STORAGE 
       // MOVE THE MAIN CODE HERE BUT EDIT IT TO SKIP THE VERIFICATION STAGE
+      
+    }else{
+      // MOVE THE MAIN CODE HERE 
     }
   }, [monitor]);
 
