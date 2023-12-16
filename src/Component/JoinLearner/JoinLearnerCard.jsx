@@ -63,6 +63,8 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
       toast.success(message);
 
 
+
+
       // function to run before proceeding to Success modal
       try {
         const devToken = localStorage.getItem("deviceToken");
