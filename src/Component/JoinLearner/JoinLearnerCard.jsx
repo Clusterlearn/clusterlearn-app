@@ -75,7 +75,8 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
         };
 
         const res = await axios.post(
-          "https://clusterlearn.cyclic.app/user/register",
+          "https://clusterlearn-api.onrender.com",
+          //"https://clusterlearn.cyclic.app/user/register",
           dataTosend
         );
         const responseFromBackend = res?.data?.data;
@@ -115,7 +116,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
       setSubmitting(false);
     }
   };
-  
+
 
   return (
     <div className="">
