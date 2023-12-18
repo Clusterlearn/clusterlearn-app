@@ -93,7 +93,6 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
             error.response.data.data.message) ||
           error.message ||
           error.toString();
-
         toast.error(message);
         console.log(message);
       }
@@ -102,11 +101,11 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
       setSubmitting(false);
     } catch (error) {
       const message =
-        error.response.data.data.error ||
-        error.response.data.data.status ||
+        error.response?.data?.data?.error ||
+        error.response?.data?.data?.status ||
         (error.response &&
-          error.response.data &&
-          error.response.data.data.message) ||
+          error.response?.data &&
+          error.response?.data?.data?.message) ||
         error.message ||
         error.toString();
 
