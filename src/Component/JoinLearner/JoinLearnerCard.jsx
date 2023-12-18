@@ -87,8 +87,9 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
           dataTosend, { headers }
         );
         const responseFromBackend = res?.data?.data;
+        console.log(responseFromBackend);
 
-        setResData(responseFromBackend);
+        // setResData(responseFromBackend);
 
         console.log("JoinLearnerCard :", responseFromBackend);
       } catch (error) {
