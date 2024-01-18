@@ -47,7 +47,7 @@ function Hero_Section1() {
   const toJoinLearner = () => {
     setJoinLearnerBtn(!joinLearnerBtn); //true
     // setJoinLearnerBtn(!joinLearnerBtn);
-    setJoinGroupBtn(!joinGroupBtn); //fase
+    setJoinGroupBtn(!joinGroupBtn); //false
     // setModal(!showModal)
   };
 
@@ -57,10 +57,10 @@ function Hero_Section1() {
 
   // SUCCESS MODAL
   const toSuccess = () => {
-    setJoinLearnerBtn(!joinLearnerBtn); // false
-    // setJoinGroupBtn(!joinGroupBtn)
+    //setJoinLearnerBtn(!joinLearnerBtn);
+    //setJoinGroupBtn(!joinGroupBtn)
     setSuccess(!success);
-    // setModal(false)
+    //setModal(false)
   };
   const closeSuccess = () => {
     setSuccess(false);
@@ -68,6 +68,7 @@ function Hero_Section1() {
 
   const monitorIsChecked = () => {
     setIsChecked(!isChecked);
+
     // console.log("From hero_section: ", isChecked);
   };
 
@@ -132,6 +133,10 @@ function Hero_Section1() {
           <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
             <JoinGroup
               toConfirmEmail={toConfirmEmail}
+              toSuccess={toSuccess}
+              setJoinLearnerBtn={setJoinLearnerBtn}
+              toJoinLearner={toJoinLearner}
+              setJoinGroupBtn={setJoinGroupBtn}
               toggleModal={toggleModal}
               monitorIsChecked={monitorIsChecked}
             />
@@ -150,7 +155,6 @@ function Hero_Section1() {
         <div className={`${joinLearnerBtn ? "block" : "hidden"}`}>
           <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
             <JoinLearnerCard
-              toSuccess={toSuccess}
               toggleModal={closeToJoinLearner}
               isChecked={isChecked}
               toSetToken={toSetToken}
@@ -161,7 +165,7 @@ function Hero_Section1() {
         {/* card 4 */}
         <div className={`${success ? "block" : "hidden"}`}>
           <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <Success toggleModal={closeSuccess} />
+            <Success  toggleModal={closeSuccess} />
           </div>
         </div>
       </div>
