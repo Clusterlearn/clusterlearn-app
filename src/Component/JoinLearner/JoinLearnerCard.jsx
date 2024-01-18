@@ -10,7 +10,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
   // const [showSelectedSession, setShowSelectedSession] = useState(false);
   // const [selectedSession, setSelectedSession] = useState(null);
   // const [txtColorSelected, setTxtColorSelected] = useState(false);
-  const [txtColorSelected2, setTxtColorSelected2] = useState(false);
+  // const [txtColorSelected2, setTxtColorSelected2] = useState(false);
   const [getEmail, setGetEmail] = useState(false);
   const [email, setEEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
