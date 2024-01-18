@@ -5,11 +5,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
-  const [showSelectStage, setShowSelectStage] = useState(false);
-  const [selectedStage, setSelectedStage] = useState(null);
-  const [showSelectedSession, setShowSelectedSession] = useState(false);
-  const [selectedSession, setSelectedSession] = useState(null);
-  const [txtColorSelected, setTxtColorSelected] = useState(false);
+  // const [showSelectStage, setShowSelectStage] = useState(false);
+  // const [selectedStage, setSelectedStage] = useState(null);
+  // const [showSelectedSession, setShowSelectedSession] = useState(false);
+  // const [selectedSession, setSelectedSession] = useState(null);
+  // const [txtColorSelected, setTxtColorSelected] = useState(false);
   const [txtColorSelected2, setTxtColorSelected2] = useState(false);
   const [getEmail, setGetEmail] = useState(false);
   const [email, setEEmail] = useState("");
