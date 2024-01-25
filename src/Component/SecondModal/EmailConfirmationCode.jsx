@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
+const EmailConfirmationCode = ({ toJoinLearner, toggleModal }) => {
   const [getEmail, setGetEmail] = useState(false);
   const [email, setEEmail] = useState("");
   // const [modal, setModal] = useState(false);
@@ -23,16 +23,15 @@ const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
   }, [5000]);
 
   const redirectToEmail = () => {
-    const atPos = email.indexOf("@")
+    const atPos = email.indexOf("@");
     const hoester = email.substring(atPos + 1);
-    return `https://www.${hoester}`
+    return `https://www.${hoester}`;
   };
   const handleRedirect = () => {
     const emailLink = redirectToEmail();
 
-    window.open(emailLink, "_blank")
-  }
-
+    window.open(emailLink, "_blank");
+  };
 
   return (
     // fixed z-10 inset-0 overscroll-none bg-black bg-opacity-50
@@ -76,14 +75,12 @@ const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
               Join Group
             </button>
 
-            
-              <button
-                onClick={handleRedirect}
-                className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent"
-              >
-                Go to mail
-              </button>
-            
+            <button
+              onClick={handleRedirect}
+              className=" sm:mt-4 md:mt-0 lg:w-[175px] sm:w-[282px] lg:h-[60px] sm:h-[48px] sm:text-[14px] text-[#E76F51] text-xl font-normal bg-white border-2 rounded-[30px] border-transparent"
+            >
+              Go to mail
+            </button>
           </div>
         </div>
       </div>
@@ -91,4 +88,4 @@ const ConfirmEmail = ({ toJoinLearner, toggleModal }) => {
   );
 };
 
-export default ConfirmEmail;
+export default EmailConfirmationCode;

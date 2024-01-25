@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 // import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CloseCircle } from "../../../src/asset/CloseCircle.svg";
 import { ReactComponent as EmailIcon } from "../../../src/asset/EmailIcon.svg";
-
 
 function validateEmail(value) {
   let error;
@@ -16,7 +15,15 @@ function validateEmail(value) {
   return error;
 }
 
-const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearnerBtn, toJoinLearner, monitorIsChecked, toSuccess }) => {
+const FirstVerificationEmail = ({
+  toConfirmEmail,
+  toggleModal,
+  setJoinGroupBtn,
+  setJoinLearnerBtn,
+  toJoinLearner,
+  monitorIsChecked,
+  toSuccess,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -63,9 +70,8 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearne
                         toSuccess(true);
                         setJoinLearnerBtn(false);
                       } else {
-                        localStorage.setItem("email", values.email)
+                        localStorage.setItem("email", values.email);
                         toConfirmEmail(true);
-
                       }
                       console.log("Form submitted successfully.");
                       setSubmitting(false);
@@ -162,4 +168,4 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearne
   );
 };
 
-export default JoinGroup;
+export default FirstVerificationEmail;

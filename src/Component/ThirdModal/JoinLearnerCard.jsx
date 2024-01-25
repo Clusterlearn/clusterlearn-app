@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import close from "../../asset/close-o.svg";
-import { IoMdRadioButtonOn } from "react-icons/io";
+//import { IoMdRadioButtonOn } from "react-icons/io";
 import axios from "axios";
 import toast from "react-hot-toast";
 
