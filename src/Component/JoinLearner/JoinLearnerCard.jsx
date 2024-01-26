@@ -47,9 +47,11 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
     try {
       const response = await axios.post(
-        "https://clusterlearn.cyclic.app/user/verify",
+        // "https://clusterlearn.cyclic.app/user/verify",
+        "http://clusterlearn-api.onrender.com/user/verify",
         data
       );
+      
 
       const message = response?.data?.data?.message;
       const deviceToken = response?.data?.data?.deviceToken;
@@ -83,7 +85,8 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
         const res = await axios.post(
           // "https://clusterlearn.onrender.com",
-          "https://clusterlearn.cyclic.app/user/register",
+          // "https://clusterlearn.cyclic.app/user/register",
+          "http://clusterlearn-api.onrender.com/user/register",
           dataTosend, { headers }
         );
         const responseFromBackend = res?.data?.data;
