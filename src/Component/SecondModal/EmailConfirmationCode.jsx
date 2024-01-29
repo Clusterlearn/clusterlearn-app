@@ -9,6 +9,8 @@ const EmailConfirmationCode = ({ toJoinLearner, toggleModal }) => {
   //   setModal(!modal);
   // };
 
+  // if(localStorage.getItem("email")) {return setEEmail(localStorage.getItem("email"))}
+
   const interval = setInterval(() => {
     const email = localStorage.getItem("email");
     // console.log("in this page", email);
@@ -25,6 +27,7 @@ const EmailConfirmationCode = ({ toJoinLearner, toggleModal }) => {
   const redirectToEmail = () => {
     const atPos = email.indexOf("@");
     const hoester = email.substring(atPos + 1);
+    console.log(`https://www.${hoester}`)
     return `https://www.${hoester}`;
   };
   const handleRedirect = () => {
@@ -34,9 +37,8 @@ const EmailConfirmationCode = ({ toJoinLearner, toggleModal }) => {
   };
 
   return (
-    // fixed z-10 inset-0 overscroll-none bg-black bg-opacity-50
     <div className="">
-      <div className="h-screen flex justify-center items-center">
+      <div className="h-screen flex justify-center items-center ">
         <div className="relative modal-content font-ver sm:w-[342px] lg:w-[602px] xl:w-[50%] 2xl:w-[40%]  rounded-2xl  bg-[#E76F51]  lg:px-12 sm:px-8 lg:py-12">
           <span
             className="cursor-pointer absolute top-7 right-6"

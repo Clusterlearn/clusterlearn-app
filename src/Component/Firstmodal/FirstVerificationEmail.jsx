@@ -16,7 +16,7 @@ function validateEmail(value) {
 }
 
 const FirstVerificationEmail = ({
-  toConfirmEmail,
+  toEmailConfirmationCode,
   toggleModal,
   setJoinGroupBtn,
   setJoinLearnerBtn,
@@ -28,6 +28,9 @@ const FirstVerificationEmail = ({
   const [email, setEEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+
+  // console.log(email)
+
   const dynamicBorderStyle = isChecked
     ? "border-[#E76F51]"
     : "border-[#0F172A]";
@@ -35,10 +38,10 @@ const FirstVerificationEmail = ({
   return (
     <>
       {/* fixed z-10 inset-0 overscroll-none bg-black bg-opacity-50 */}
-      <div className="modal">
+      <div className="modal ">
         <div className="">
           <div className="h-screen flex justify-center items-center">
-            <div className="relative modal-content font-ver sm:w-[342px]   w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl bg-gray-100">
+            <div className="relative modal-content font-ver sm:w-[342px]   w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl bg-white">
               <div className="flex items-center justify-between px-8 lg:py-8 sm:mt-4 ">
                 <h1 className="text-darkblue md:text-2xl lg:text-2xl sm:text-[16px] font-normal">
                   Verify Email
@@ -60,20 +63,28 @@ const FirstVerificationEmail = ({
                   setEEmail(values.email);
                   //console.log("from JoinGroup: ", values);
                   try {
+                    console.log(values.email);
+                    localStorage.setItem("email", values.email)
                     const response = await axios.post(
                       "https://clusterlearn.cyclic.app/user/getverify",
                       values
                     );
-
+console.log(response.data)
                     if (response.status === 200) {
-                      if (localStorage.getItem("email") === values.email) {
-                        toSuccess(true);
-                        setJoinLearnerBtn(false);
-                      } else {
-                        localStorage.setItem("email", values.email);
-                        toConfirmEmail(true);
-                      }
-                      console.log("Form submitted successfully.");
+                      toEmailConfirmationCode();
+                      // closeToEmailConfirmationCode()
+                      // toJoinLearner()
+                      // toConfirmEmail(true);
+                      // toSuccess(true);
+                      // setJoinLearnerBtn(true);
+                      // if (localStorage.getItem("email") === values.email) {
+                        
+                      // } 
+                      // else {
+                      //   localStorage.setItem("email", values.email);
+                        
+                      // }
+                      // console.log("Form submitted successfully.");
                       setSubmitting(false);
                     } else {
                       console.error("Form submission failed.");
@@ -127,7 +138,7 @@ const FirstVerificationEmail = ({
                               className="peer sr-only"
                               onClick={() => {
                                 setIsChecked(!isChecked);
-                                monitorIsChecked();
+                                // monitorIsChecked();
                               }}
                             />
                             <span
