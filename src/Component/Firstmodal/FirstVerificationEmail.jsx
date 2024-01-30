@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 // import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactComponent as CloseCircle } from "../../../src/asset/CloseCircle.svg";
 import { ReactComponent as EmailIcon } from "../../../src/asset/EmailIcon.svg";
-
 
 function validateEmail(value) {
   let error;
@@ -16,10 +15,21 @@ function validateEmail(value) {
   return error;
 }
 
-const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearnerBtn, toJoinLearner, monitorIsChecked, toSuccess }) => {
+const FirstVerificationEmail = ({
+  toEmailConfirmationCode,
+  toggleModal,
+  setJoinGroupBtn,
+  setJoinLearnerBtn,
+  toJoinLearner,
+  monitorIsChecked,
+  toSuccess,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+
+  // console.log(email)
 
   const dynamicBorderStyle = isChecked
     ? "border-[#E76F51]"
@@ -28,10 +38,10 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearne
   return (
     <>
       {/* fixed z-10 inset-0 overscroll-none bg-black bg-opacity-50 */}
-      <div className="modal">
+      <div className="modal ">
         <div className="">
           <div className="h-screen flex justify-center items-center">
-            <div className="relative modal-content font-ver sm:w-[342px]   w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl bg-gray-100">
+            <div className="relative modal-content font-ver sm:w-[342px]   w-[602px] md:w-[80%] lg:w-[70%] xl:w-[50%] 2xl:w-[40%]  rounded-2xl bg-white">
               <div className="flex items-center justify-between px-8 lg:py-8 sm:mt-4 ">
                 <h1 className="text-darkblue md:text-2xl lg:text-2xl sm:text-[16px] font-normal">
                   Verify Email
@@ -53,21 +63,28 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearne
                   setEEmail(values.email);
                   //console.log("from JoinGroup: ", values);
                   try {
+                    console.log(values.email);
+                    localStorage.setItem("email", values.email)
                     const response = await axios.post(
                       "https://clusterlearn.cyclic.app/user/getverify",
                       values
                     );
-
+console.log(response.data)
                     if (response.status === 200) {
-                      if (localStorage.getItem("email") === values.email) {
-                        toSuccess(true);
-                        setJoinLearnerBtn(false);
-                      } else {
-                        localStorage.setItem("email", values.email)
-                        toConfirmEmail(true);
-
-                      }
-                      console.log("Form submitted successfully.");
+                      toEmailConfirmationCode();
+                      // closeToEmailConfirmationCode()
+                      // toJoinLearner()
+                      // toConfirmEmail(true);
+                      // toSuccess(true);
+                      // setJoinLearnerBtn(true);
+                      // if (localStorage.getItem("email") === values.email) {
+                        
+                      // } 
+                      // else {
+                      //   localStorage.setItem("email", values.email);
+                        
+                      // }
+                      // console.log("Form submitted successfully.");
                       setSubmitting(false);
                     } else {
                       console.error("Form submission failed.");
@@ -121,7 +138,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearne
                               className="peer sr-only"
                               onClick={() => {
                                 setIsChecked(!isChecked);
-                                monitorIsChecked();
+                                // monitorIsChecked();
                               }}
                             />
                             <span
@@ -162,4 +179,4 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, setJoinGroupBtn, setJoinLearne
   );
 };
 
-export default JoinGroup;
+export default FirstVerificationEmail;
