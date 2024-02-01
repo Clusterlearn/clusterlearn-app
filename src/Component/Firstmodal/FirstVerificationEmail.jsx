@@ -18,11 +18,11 @@ function validateEmail(value) {
 const FirstVerificationEmail = ({
   toEmailConfirmationCode,
   toggleModal,
-  setJoinGroupBtn,
-  setJoinLearnerBtn,
-  toJoinLearner,
-  monitorIsChecked,
-  toSuccess,
+  // setJoinGroupBtn,
+  // setJoinLearnerBtn,
+  // toJoinLearner,
+  // monitorIsChecked,
+  // toSuccess,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
@@ -72,19 +72,6 @@ const FirstVerificationEmail = ({
 console.log(response.data)
                     if (response.status === 200) {
                       toEmailConfirmationCode();
-                      // closeToEmailConfirmationCode()
-                      // toJoinLearner()
-                      // toConfirmEmail(true);
-                      // toSuccess(true);
-                      // setJoinLearnerBtn(true);
-                      // if (localStorage.getItem("email") === values.email) {
-                        
-                      // } 
-                      // else {
-                      //   localStorage.setItem("email", values.email);
-                        
-                      // }
-                      // console.log("Form submitted successfully.");
                       setSubmitting(false);
                     } else {
                       console.error("Form submission failed.");
