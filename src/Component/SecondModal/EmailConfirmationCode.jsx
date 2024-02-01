@@ -3,13 +3,7 @@ import React, { useState } from "react";
 const EmailConfirmationCode = ({ toJoinLearner, toggleModal }) => {
   const [getEmail, setGetEmail] = useState(false);
   const [email, setEEmail] = useState("");
-  // const [modal, setModal] = useState(false);
 
-  // const toggleModal = () => {
-  //   setModal(!modal);
-  // };
-
-  // if(localStorage.getItem("email")) {return setEEmail(localStorage.getItem("email"))}
 
   const interval = setInterval(() => {
     const email = localStorage.getItem("email");

@@ -75,6 +75,8 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
           rememberToken: devToken,
         };
 
+        console.log("Data to send for second request are ", dataTosend)
+
          const headers = {
            "Access-Control-Allow-Origin": "*",
            Accept: "application/json",

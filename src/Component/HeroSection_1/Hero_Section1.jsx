@@ -20,7 +20,6 @@ function Hero_Section1() {
 
   // JOIN GROUP MODAL
   const toggleModal = () => {
-    console.log(1111)
     if (url.trim(" ").length < 3) {
       return toast.error("URL connot be empty!");
     }
@@ -30,55 +29,44 @@ function Hero_Section1() {
     setJoinGroupBtn(false);
     setJoinLearnerBtn(false);
     setSuccess(false);
-    // localStorage.clear()
   };
-  // console.log(showModal)
+
 
   // CONFIRM EMAIL MODEL
   const toEmailConfirmationCode = () => {
-    console.log(2222)
     setJoinGroupBtn(!joinGroupBtn); //true
-    setModal(!showModal); //false
+    setModal(false); //false
   };
 
   const closeToEmailConfirmationCode= () => {
-    console.log(3333)
     setJoinGroupBtn(!joinGroupBtn); //
-    setModal(!showModal)
+    setModal(false)
   };
 
   // JOIN LEARNER MODEL
   const toJoinLearner = () => {
-    console.log(4444)
-    // console.log("this is to join learner")
     setJoinLearnerBtn(!joinLearnerBtn); //true
     setJoinGroupBtn(!joinGroupBtn); //false
-    setModal(!showModal)
+    // setModal(!showModal)
   };
 
   const closeToJoinLearner = () => {
-    console.log(5555)
     setJoinLearnerBtn(false);
   };
 
   // SUCCESS MODAL
   const toSuccess = () => {
-    console.log(6666)
     setJoinLearnerBtn(!joinLearnerBtn);
     setJoinGroupBtn(!joinGroupBtn)
     setSuccess(!success);
     setModal(!showModal)
   };
   const closeSuccess = () => {
-    console.log(7777)
     setSuccess(false);
   };
 
   const monitorIsChecked = () => {
-    console.log(8888)
     setIsChecked(!isChecked);
-
-    // console.log("From hero_section: ", isChecked);
   };
 
   const toSetToken = () => {};
