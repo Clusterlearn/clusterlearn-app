@@ -3,159 +3,13 @@ import "./Header.css";
 // import AppContainer1 from "../AppContainer1/AppContainer1";
 import Logo from "../Logo/Logo";
 import { ReactComponent as HamburgerNav } from "../../../src/asset/HamburgerNav.svg";
-import JoinGroup from "../JoinGroup/JoinGroup";
-import ConfirmEmail from "../EmailVerification/ConfirmEmail";
-import JoinLearnerCard from "../JoinLearner/JoinLearnerCard";
-import Success from "../Success/Success";
+//import JoinGroup from "../JoinGroup/JoinGroup";
+//import EmailConfirmationCode from "../EmailVerification/EmailConfirmationCode";
+//import JoinLearnerCard from "../JoinLearner/JoinLearnerCard";
+//import Success from "../Success/Success";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -254,8 +108,6 @@ const Header = () => {
       {/* TOGGLE OF ALL THE MODAL CARDS */}
       {/* TOGGLE OF ALL THE MODAL CARDS */}
       <div className="">
-
-
         {/* Mobile Menu */}
         {showMenu && (
           <div className=" flex h-screen">

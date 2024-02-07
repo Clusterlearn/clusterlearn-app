@@ -75,6 +75,8 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
           rememberToken: devToken,
         };
 
+        console.log("Data to send for second request are ", dataTosend)
+
          const headers = {
            "Access-Control-Allow-Origin": "*",
            Accept: "application/json",
@@ -106,7 +108,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
         console.log(message);
       }
 
-      toSuccess();
+      // toSuccess();
       setSubmitting(false);
     } catch (error) {
       const message =
@@ -128,7 +130,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
   return (
     <div className="">
       <div className="h-screen flex justify-center items-center">
-        <div className="relative font-ver bg-gray-100 lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
+        <div className="relative font-ver bg-white lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
           <div className=" flex justify-between px-8 mt-10 border-b border-gray-200 pb-4">
             <span className=" font-normal lg:text-2xl sm:text-[20px] text-darkblue">
               Join Group
