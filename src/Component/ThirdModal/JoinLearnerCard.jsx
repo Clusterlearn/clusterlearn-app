@@ -135,20 +135,65 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
 
       toast.success(message);
 
-      // toSuccess(); NOTE: I STILL NEED TO WORK ON THIS PART OF THE CODE 
+
+      // function to run before proceeding to Success modal
+      try {
+        const devToken = localStorage.getItem("deviceToken");
+        const devEmail = localStorage.getItem("email");
+        const devUrl = localStorage.getItem("url");
+
+        const dataTosend = {
+          email: devEmail,
+          url: devUrl,
+          rememberToken: devToken,
+        };
+
+        console.log("Data to send for second request are ", dataTosend)
+
+         const headers = {
+           "Access-Control-Allow-Origin": "*",
+           Accept: "application/json",
+           "Content-Type": "application/json",
+         };
+
+        const res = await axios.post(
+          // "https://clusterlearn.onrender.com",
+          "https://clusterlearn.cyclic.app/user/register",
+          dataTosend, { headers }
+        );
+        const responseFromBackend = res?.data?.data;
+        console.log(responseFromBackend);
+
+        // setResData(responseFromBackend);
+
+        console.log("JoinLearnerCard :", responseFromBackend);
+      } catch (error) {
+        const message =
+          error.response.data.data.error ||
+          error.response.data.data.status ||
+          (error.response &&
+            error.response.data &&
+            error.response.data.data.message) ||
+          error.message ||
+          error.toString();
+
+        toast.error(message);
+        console.log(message);
+      }
+
+      // toSuccess();
       setSubmitting(false);
     } catch (error) {
       const message =
-        error.response.data.data.error ||
-        error.response.data.data.status ||
-        (error.response &&
-          error.response.data &&
-          error.response.data.data.message) ||
-        error.message ||
-        error.toString();
+        error?.response?.data?.data?.message ||
+        error?.response?.data?.data?.status ||
+        (error?.response &&
+          error?.response?.data &&
+          error?.response?.data?.data?.message) ||
+        error?.message ||
+        error?.toString();
 
       toast.error(message);
-      console.log(message);
 
       setSubmitting(false);
     }
@@ -159,7 +204,7 @@ const JoinLearnerCard = ({ toSuccess, toggleModal, isChecked, setResData }) => {
   return (
     <div className="">
       <div className="h-screen flex justify-center items-center">
-        <div className="relative font-ver bg-gray-100 lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
+        <div className="relative font-ver bg-white lg:w-[602px] sm:w-[342px] rounded-[15px] md:w-[80%] xl:w-[50%] 2xl:w-[40%]">
           <div className=" flex justify-between px-8 mt-10 border-b border-gray-200 pb-4">
             <span className=" font-normal lg:text-2xl sm:text-[20px] text-darkblue">
               Join Group

@@ -2,9 +2,9 @@ import React from "react";
 import toast from "react-hot-toast";
 import heroimage from "../../../src/asset/heroimage.png";
 import "./Hero_Section1.css";
-import JoinGroup from "../JoinGroup/JoinGroup";
-import ConfirmEmail from "../EmailVerification/ConfirmEmail";
-import JoinLearnerCard from "../JoinLearner/JoinLearnerCard";
+import FirstVerificationEmail from "../Firstmodal/FirstVerificationEmail";
+import EmailConfirmationCode from "../SecondModal/EmailConfirmationCode";
+import JoinLearnerCard from "../ThirdModal/JoinLearnerCard";
 import Success from "../Success/Success";
 import { useState } from "react";
 
@@ -20,34 +20,33 @@ function Hero_Section1() {
 
   // JOIN GROUP MODAL
   const toggleModal = () => {
-    if (!url) {
+    if (url.trim(" ").length < 3) {
       return toast.error("URL connot be empty!");
     }
     localStorage.setItem("url", url);
-    // console.log(url);
 
     setModal(!showModal);
     setJoinGroupBtn(false);
     setJoinLearnerBtn(false);
     setSuccess(false);
-    // localStorage.clear()
   };
+
 
   // CONFIRM EMAIL MODEL
-  const toConfirmEmail = () => {
+  const toEmailConfirmationCode = () => {
     setJoinGroupBtn(!joinGroupBtn); //true
-    setModal(!showModal); //false
+    setModal(false); //false
   };
 
-  const closeToConfirmEmail = () => {
-    setJoinGroupBtn(false);
+  const closeToEmailConfirmationCode= () => {
+    setJoinGroupBtn(!joinGroupBtn); //
+    setModal(false)
   };
 
   // JOIN LEARNER MODEL
   const toJoinLearner = () => {
     setJoinLearnerBtn(!joinLearnerBtn); //true
-    // setJoinLearnerBtn(!joinLearnerBtn);
-    setJoinGroupBtn(!joinGroupBtn); //fase
+    setJoinGroupBtn(!joinGroupBtn); //false
     // setModal(!showModal)
   };
 
@@ -57,10 +56,10 @@ function Hero_Section1() {
 
   // SUCCESS MODAL
   const toSuccess = () => {
-    setJoinLearnerBtn(!joinLearnerBtn); // false
-    // setJoinGroupBtn(!joinGroupBtn)
+    setJoinLearnerBtn(!joinLearnerBtn);
+    setJoinGroupBtn(!joinGroupBtn)
     setSuccess(!success);
-    // setModal(false)
+    setModal(!showModal)
   };
   const closeSuccess = () => {
     setSuccess(false);
@@ -68,7 +67,6 @@ function Hero_Section1() {
 
   const monitorIsChecked = () => {
     setIsChecked(!isChecked);
-    // console.log("From hero_section: ", isChecked);
   };
 
   const toSetToken = () => {};
@@ -130,8 +128,12 @@ function Hero_Section1() {
         {/* card 1 */}
         <div className={` ${showModal ? "block" : "hidden"}`}>
           <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <JoinGroup
-              toConfirmEmail={toConfirmEmail}
+            <FirstVerificationEmail
+              toEmailConfirmationCode={toEmailConfirmationCode}
+              toSuccess={toSuccess}
+              setJoinLearnerBtn={setJoinLearnerBtn}
+              toJoinLearner={toJoinLearner}
+              setJoinGroupBtn={setJoinGroupBtn}
               toggleModal={toggleModal}
               monitorIsChecked={monitorIsChecked}
             />
@@ -140,9 +142,9 @@ function Hero_Section1() {
         {/* card 2 */}
         <div className={`${joinGroupBtn ? "block" : "hidden"}`}>
           <div className="  bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
-            <ConfirmEmail
+            <EmailConfirmationCode
               toJoinLearner={toJoinLearner}
-              toggleModal={closeToConfirmEmail}
+              toggleModal={closeToEmailConfirmationCode}
             />
           </div>
         </div>
@@ -150,7 +152,6 @@ function Hero_Section1() {
         <div className={`${joinLearnerBtn ? "block" : "hidden"}`}>
           <div className=" bg-gray-400 bg-opacity-50 fixed inset-0 z-50 ">
             <JoinLearnerCard
-              toSuccess={toSuccess}
               toggleModal={closeToJoinLearner}
               isChecked={isChecked}
               toSetToken={toSetToken}

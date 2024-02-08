@@ -18,23 +18,12 @@ function validateEmail(value) {
 const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEEmail] = useState("");
-  const [monitor, setMonitor] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-
-  console.log(isChecked);
+  const [monitor, setMonitor] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(()=> {
-    localStorage.setItem("email", email);
-    const ret = JSON.parse(localStorage.getItem("isChecked"))
-    console.log(ret);
-    if(ret === true){
-      // IF THERE ISN'T AN "isChecked" SSET IN THE LOCAL STORAGE 
-      // MOVE THE MAIN CODE HERE BUT EDIT IT TO SKIP THE VERIFICATION STAGE
-      
-    }else{
-      // MOVE THE MAIN CODE HERE 
-    }
-  }, [monitor]);
+    localStorage.setItem("email", email)
+  }, [monitor])
 
   // console.log("check email", email);
  
@@ -66,16 +55,13 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                 }}
                 onSubmit={async (values) => {
                   setSubmitting(true)
-                  // save isChecked to localStorage
-                  localStorage.setItem("isChecked", isChecked)
                   // same shape as initial values
                   setEEmail(values.email)
                   setMonitor(true)
                   console.log("from JoinGroup: ",values);
                   try {
                     const response = await axios.post(
-                      // "https://clusterlearn.cyclic.app/user/getverify",
-                      "https://clusterlearn-api.onrender.com/user/getverify",
+                      "https://clusterlearn.cyclic.app/user/getverify",
                       values
                     );
 
@@ -131,7 +117,7 @@ const JoinGroup = ({ toConfirmEmail, toggleModal, monitorIsChecked }) => {
                               name="checked"
                               value="rememberChecked"
                               className="peer sr-only"
-                              onClick={() => {setIsChecked(!isChecked); console.log("is checked is clicked"); monitorIsChecked()}}
+                              onClick={() => {setIsChecked(!isChecked); monitorIsChecked()}}
                             />
                             <span
                               className="w-2/5 h-5/5  bg-darkblue absolute  rounded-full px-1
